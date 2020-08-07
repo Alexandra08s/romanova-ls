@@ -1,0 +1,152 @@
+footer {
+    padding-top: 62px;
+    padding-bottom: 74px;
+    background-color: $color-shark;
+}
+
+.footer__wrapper {
+    display: flex;
+}
+
+.footer__copyright {
+    color: $color-river-bed;
+    font-weight: 600;
+    font-size: 48px;
+    line-height: 65px;
+    margin-right: 56px;
+}
+
+.footer__info {
+    width: 12%;
+    margin-right: 141px;
+}
+
+.footer__author {
+    text-transform: uppercase;
+    color: $color-white;
+    font-size: 18px;
+    line-height: 30px;
+    font-weight: bold;
+    margin-bottom: 16px;
+}
+
+.footer__descr {
+    line-height: 30px;
+}
+
+.footer__block {
+    margin-right: 75px;
+}
+
+.footer__nav-list {
+    display: flex;
+    margin-right: -31px;
+    margin-left: -31px;
+    margin-bottom: 12px;
+}
+
+.footer__nav-item {
+    color: $color-white;
+    line-height: 22px;
+    padding-right: 31px;
+    padding-left: 31px;
+    padding-bottom: 35px;
+    border-bottom: 3px solid transparent;
+
+    &:hover {
+        color: $color-electric-violet;
+        border-bottom: 3px solid $color-electric-violet;
+    }
+}
+
+.footer__block-text {
+    color: $color-white;
+    opacity: 0.45;  
+    margin-bottom: 40px;
+    max-width: 69%;
+}
+
+.footer__social-list {
+    display: flex;
+    justify-content: space-between;
+    max-width: 55%;
+    align-items: center;
+}
+
+.footer__social-link {
+    border: 1px solid $color-white;
+    opacity: 0.3;
+    border-radius: 50%;
+    display: block;
+
+    &--inst {
+        padding: 13.5px;
+    }
+
+    &--vk {
+        padding: 10px;
+    }
+
+    &--github {
+        padding: 12px;
+    }
+
+    &--email {
+        padding: 13px;
+    }
+
+    &:hover {
+        border: 1px solid $color-electric-violet;
+        opacity: 1;
+    }
+}
+
+.footer__social-link:hover > .footer__social-img {
+    fill: $color-electric-violet;
+    opacity: 1;
+}
+
+.footer__social-img {
+    fill: $color-white;
+    opacity: 0.3;
+    display: block;
+
+    &--inst {
+        width: 21px;
+        height: 21px;
+    }
+
+    &--vk {
+        width: 28px;
+        height: 28px;
+    }
+
+    &--github {
+        width: 24px;
+        height: 24px;
+    }
+
+    &--email {
+        width: 22px;
+        height: 22px;
+    }
+}
+
+.footer__quote {
+    width: 38%;
+    padding-top: 70px;
+}
+
+.footer__quote-expr {
+    line-height: 30px;
+    margin-bottom: 31px;
+    color: $color-white;
+    opacity: 0.45;
+}
+
+.footer__quote-author {
+    font-style: italic;
+    color: $color-white;
+    font-size: 16px;
+    line-height: 22px;
+}

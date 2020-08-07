@@ -5,3 +5,59 @@ mixin icon(name, className)
 
 mixin image(path, className)
   img(src=require(`images/${path}`).default class=className)
+
+mixin nav-list(listClassName, itemsClassName)
+  -
+    var menuTabs = [
+      {
+          label: 'Обо мне',
+          link: '#info'
+      },
+      {
+          label: 'Навыки',
+          link: '#skills'
+      },
+      {
+          label: 'Работы',
+          link: '#examples'
+      },
+      {
+          label: 'Отзывы',
+          link: '#reviews'
+      },
+    ] 
+  nav
+    ul(class=`${listClassName}`)
+      each menuTab in menuTabs
+        li(class=`${itemsClassName}`)
+          a(href=menuTab.link)= menuTab.label
+
+mixin social-list(listClassName, itemsClassName, imgsClassName, isFooter)
+  - 
+    var socialTabs = [
+      {
+        title: 'Instagram',
+        img: 'inst',
+        link: '#'
+      },
+      {
+        title: 'Github',
+        img: 'github',
+        link: '#'
+      },
+      {
+        title: 'VK',
+        img: 'vk',
+        link: '#'
+      },
+      {
+        title: 'Email',
+        img: 'email',
+        link: '#'
+      },
+    ]
+  ul(class=`${listClassName}`)
+    each socialTab in socialTabs
+      li(class=`${itemsClassName}`)
+        a(href=socialTab.link, target="_blank", title=socialTab.title, class=isFooter && ['footer__social-link', `footer__social-link--${socialTab.img}`])
+          +icon(socialTab.img, [`${imgsClassName}`, `${imgsClassName}--${socialTab.img}`])
