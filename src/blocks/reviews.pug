@@ -1,0 +1,32 @@
+- 
+  var reviews = [
+    {
+      name: 'Ковальчук Дмитрий',
+      position: 'Основатель Loftschool',
+      img: 'review-1',
+      text: 'Этот парень проходил обучение веб\u00A0-\u00A0разработке не\u00A0где-то, а\u00A0в\u00A0LoftSchool! 4,5\u00A0месяца только самых тяжелых испытаний и\u00A0бессонных ночей!'
+    },
+    {
+      name: 'Владимир Сабанцев',
+      position: 'Преподавать',
+      img: 'review-2',
+      text: 'Этот код выдержит любые испытания. Только пожалуйста, не\u00A0загружайте сайт на\u00A0слишком старых браузерах'
+    }
+  ]
+
+section.reviews#reviews 
+  .container
+    .reviews__wrapper
+      h2.section__title.reviews__title Что обо мне говорят
+      .reviews__contols
+        button(type="button").reviews__button.reviews__button-prev
+        button(type="button").reviews__button.reviews__button-next
+    ul.reviews__list
+      each reviewItem in reviews
+        li.reviews__item
+          p.reviews__text= reviewItem.text
+          .reviews__author-wrapper
+            +image(`content/reviews/${reviewItem.img}.png`, 'reviews__img', 75, 75)
+            .reviews__author
+              p.reviews__author-name= reviewItem.name
+              p.reviews__author-position=  reviewItem.position
