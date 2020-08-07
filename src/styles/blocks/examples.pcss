@@ -1,2 +1,140 @@
 .examples {
+    padding-bottom: 13px;
+}
+
+.examples__title {
+  margin-bottom: 83px;
+}
+
+.examples__wrapper {
+  display: flex;
+}
+
+.examples__slider {
+  position: relative;
+  margin-right: 156px;
+  width: 66%;
+}
+
+.examples__slider-item {
+  display: none;
+}
+
+.examples__slider-item.active {
+  display: block;
+}
+
+.examples__slider-list--min {
+  position: absolute;
+  top: 143px;
+  right: -2px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.examples__slider-item--min.active {
+  border: 3px solid $color-golden-grass;
+}
+
+.examples__slider-num {
+  position: absolute;
+  top: 34.5%;
+  right: -16%;
+  font-weight: 800;
+  font-size: 400px;
+  line-height: 48px;
+  color: $color-mystic;
+  z-index: -1;
+}
+
+.examples__slider-controls {
+  display: flex;
+  margin-left: 870px;
+}
+
+.examples__slider-control {
+  width: 53px;
+  height: 53px;
+  background-color: $color-shark;
+  position: relative;
+
+    &--prev {
+      &:before {
+        background: svg-load('arrow-up.svg', fill=$color-river-bed, width=100%, height=100%);
+      }
+    }
+
+    &--next {
+      &:before {
+        background: svg-load('arrow-down.svg', fill=$color-pale-sky, width=100%, height=100%);
+      }
+    }
+
+    &:before {
+      content: '';
+      position: absolute;
+      background-size: 100%;
+      background-repeat: no-repeat;
+      width: 18px;
+      height: 10px;
+      transform: translate(-50%, -50%);
+  }
+}
+
+.examples__info {
+  width: 22%;
+}
+
+.examples__info-tags {
+  display: flex;
+  margin-left: -4px;
+  margin-right: -4px;
+  margin-bottom: 35px;
+}
+
+.examples__info-tag {
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+.examples__info-tag--name {
+  background-color: $color-catskill-white;
+  padding: 14px 22px;
+  border-radius: 24px;
+}
+
+.examples__info-name {
+  font-weight: bold;
+  font-size: 30px;
+  line-height: 41px;
+  margin-bottom: 35px;
+}
+
+.examples__info-text {
+  font-weight: 600;
+  line-height: 30px;
+  opacity: 0.8;
+  margin-bottom: 45px;
+}
+
+.examples__info-link {
+  color: $color-indigo;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 25px;
+  position: relative;
+  padding-left: 39px;
+
+  &:before {
+    content: '';
+    position: absolute;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background: svg-load('link.svg', fill=$color-indigo, width=100%, height=100%);
+    width: 23px;
+    height: 23px;
+    top: 0;
+    left: 0;
+  }
 }
