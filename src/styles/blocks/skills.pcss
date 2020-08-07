@@ -1,5 +1,5 @@
 .skills {
-    padding-bottom: 313px;
+    padding-bottom: 340px;
     position: relative;
 }
 
@@ -11,7 +11,7 @@
     width: 712px;
     height: 627px;
     position: absolute;
-    top: 17%;
+    top: 12%;
     left: 0;
 }
 
@@ -34,14 +34,22 @@
 }
 
 .skills__chart {
-    
+  margin-bottom: -52px;
 }
 
 .skills__chart-title {
     font-weight: bold;
     font-size: 24px;
     line-height: 33px;
-    margin-bottom: 37px;
+    margin-bottom: 32px;
+}
+
+.skills__chart-wrapper {
+  display: flex;
+}
+
+.skills__chart-wrapper {
+  margin-bottom: 52px;
 }
 
 .skills__chart-progress {
@@ -49,17 +57,79 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 150px;
+    height: 150px;
+    margin-right: 54px;
+}
+
+.skills__chart-progress:last-child {
+    margin-right: 0;
 }
 
 .skills__chart-progress svg {
    position: relative;
+   display: inline-block;
+   transform: rotate(180deg);
 }
 
 .skills__chart-progress svg circle{
     fill: none;
-    transform: translate(1%,1%);
-    stroke-dasharray: 400;
-    stroke-dashoffset: 400;
+    stroke-dasharray: 440;
+    stroke-dashoffset: 440;
+}
+
+.skills__chart-progress  {
+  & svg circle:nth-child(2) {
+    stroke-width: 15;
+  }
+
+  &--html {
+    & svg circle:nth-child(2) {
+      stroke-dashoffset: calc(440 - (440*25)/100);
+    }
+  }
+
+  &--css {
+    & svg circle:nth-child(2) {
+      stroke-dashoffset: calc(440 - (440*13)/100);
+    }
+  }
+
+  &--javascript {
+    & svg circle:nth-child(2) {
+      stroke-dashoffset: calc(440 - (440*75)/100);
+    }
+  }
+
+  &--jquery-vue {
+    & svg circle:nth-child(2) {
+      stroke-dashoffset: calc(440 - (440*25)/100);
+    }
+  }
+
+  &--git {
+    & svg circle:nth-child(2) {
+      stroke-dashoffset: calc(440 - (440*13)/100);
+    }
+  }
+
+  &--terminal {
+    & svg circle:nth-child(2) {
+      stroke-dashoffset: calc(440 - (440*25)/100);
+    }
+  }
+
+  &--gulp {
+    & svg circle:nth-child(2) {
+      stroke-dashoffset: calc(440 - (440*50)/100);
+    }
+  }
+
+  &--webpack {
+    & svg circle:nth-child(2) {
+      stroke-dashoffset: calc(440 - (440*35)/100);
+    }
+  }
 }
 
 .skills__chart-progress svg circle:nth-child(3) {
@@ -67,11 +137,6 @@
   stroke: $color-river-bed;
   opacity: 0.1;
   stroke-width: 8;
-}
-
-.skills__chart-progress svg circle:nth-child(2) {
-  stroke-dashoffset: calc(440 - (440*87)/100);
-  stroke-width: 15;
 }
 
 .skills__chart-tech {
@@ -83,9 +148,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-weight: bold;
-    font-size: 18px;
-    line-height: 25px;
-    color: $color-river-bed;
-    opacity: 0.5;
+}
+
+.skills__chart-tech-text {
+  max-width: 80%;
+  text-align: center;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 25px;
+  color: $color-river-bed;
+  opacity: 0.5;
 }
