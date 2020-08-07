@@ -1,0 +1,17 @@
+section.skills#skills 
+  .container
+    .skills__wrapper
+      +image('content/backpack.png', 'skills__img', 712, 627)
+      .skills__info
+        h2.section__title.skills__title Чем я могу быть полезен вам
+        p.skills__text Этот сайт я&nbsp;сделал в&nbsp;рамках обучения в&nbsp;Школе онлайн образования LoftSchool. Чуть позже я&nbsp;освежу в&nbsp;нём свой&nbsp;контент. А&nbsp;пока посмотрите, как&nbsp;тут всё&nbsp;классно и&nbsp;красиво!
+        .skills__chart
+          p.skills__chart-title Front-end
+          .skills__chart-progress
+            svg(viewBox="0 0 140 140", width="150", heigth="150", preserveAspectRatio="xMidYMid meet")
+              lineargradient#linear
+                stop(offset='27%' stop-color='#7C00EA')
+                stop(offset='70%' stop-color='#4A00ED')
+              circle(cx="70", cy="70", r="70", stroke="url(#linear)")
+              circle(cx="70", cy="70", r="70")
+            p.skills__chart-tech JavaScript

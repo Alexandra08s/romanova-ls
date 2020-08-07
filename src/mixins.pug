@@ -3,8 +3,8 @@ mixin icon(name, className)
   svg(class=className viewBox=icon.viewBox preserveAspectRatio="none")
     use(xlink:href=`sprite.svg#${icon.id.replace('-usage', '')}`)
 
-mixin image(path, className)
-  img(src=require(`images/${path}`).default class=className)
+mixin image(path, className, widthValue, heightValue)
+  img(src=require(`images/${path}`).default class=className width=widthValue height=heightValue)
 
 mixin nav-list(listClassName, itemsClassName)
   -
