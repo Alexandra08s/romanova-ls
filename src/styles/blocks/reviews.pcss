@@ -1,7 +1,7 @@
 .reviews {
     padding-top: 221px;
     background-image: url('../images/background-reviews.jpg');
-    background-size: contain;
+    background-size: cover;
     background-repeat: no-repeat;
     padding-bottom: 198px;
 }
@@ -20,19 +20,38 @@
 }
 
 .reviews__button {
-  background-size: 100%;
-  background-repeat: no-repeat;
-  width: 53px;
-  height: 53px;
+  position: relative;
   outline: none;
+  padding: 24.5px;
+  border: 2px solid $color-river-bed;
+  border-radius: 50%;
+  background-color: transparent;
+
+  &:before {
+    content: '';
+    width: 17px;
+    height: 10px;
+    position: absolute;
+    top: 19px;
+    transform: rotate(90deg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+  }
 
   &-prev {
     margin-right: 28px;
-    background: svg-load('arrow-left.svg', stroke=$color-river-bed, fill=transparent, width=100%, height=100%);
+
+    &:before {
+      background-image: svg-load('arrow-down.svg', fill=$color-river-bed, width=100%, height=100%);
+      left: 12px;
+    }
   }
 
   &-next {
-    background: svg-load('arrow-right.svg', stroke=$color-river-bed, fill=transparent, width=100%, height=100%);
+    &:before {
+      background-image: svg-load('arrow-up.svg', fill=$color-river-bed, width=100%, height=100%);
+      left: 20px;
+    }
   }
 }
 

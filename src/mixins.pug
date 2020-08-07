@@ -1,6 +1,6 @@
-mixin icon(name, className)
+mixin icon(name, className, widthValue, heightValue)
   - var icon = require(`images/icons/${name}.svg`).default;
-  svg(class=className viewBox=icon.viewBox preserveAspectRatio="none")
+  svg(class=className viewBox=icon.viewBox preserveAspectRatio="none" width=widthValue height=heightValue)
     use(xlink:href=`sprite.svg#${icon.id.replace('-usage', '')}`)
 
 mixin image(path, className, widthValue, heightValue)
@@ -60,14 +60,14 @@ mixin social-list(listClassName, itemsClassName, imgsClassName, isFooter)
     each socialTab in socialTabs
       li(class=`${itemsClassName}`)
         a(href=socialTab.link, target="_blank", title=socialTab.title, class=isFooter && ['footer__social-link', `footer__social-link--${socialTab.img}`])
-          +icon(socialTab.img, [`${imgsClassName}`, `${imgsClassName}--${socialTab.img}`])
+          +icon(socialTab.img, [`${imgsClassName}`, `${imgsClassName}--${socialTab.img}`], 30, 30)
 
 mixin skill-progress-bar(skillName, skillNameClass)
   .skills__chart-progress(class=`skills__chart-progress--${skillNameClass}`)
     svg(viewBox="0 0 160 160", width="150", heigth="150", preserveAspectRatio="xMidYMid meet")
         lineargradient#linear
-          stop(offset='27%' stop-color='#7C00EA')
-          stop(offset='70%' stop-color='#4A00ED')
+          stop(offset='27%' stop-color='#4A00ED')
+          stop(offset='70%' stop-color='#7C00EA')
         circle(cx="80", cy="80", r="70", stroke="url(#linear)")
         circle(cx="80", cy="80", r="70")
     .skills__chart-tech
