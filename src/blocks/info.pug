@@ -2,7 +2,8 @@ section.info#info
   .container
     article.info__article
       .info__data
-        +image('content/avatar.png', 'info__img', 200, 200)
+        .info__img-wrapper
+          +image('content/avatar.jpg', 'info__img', 200, 200)
         .info__facts-wrapper
           ul.info__facts-list
             li.info__fact-item.info__fact-item--cat Проживаю:
@@ -17,3 +18,4 @@ section.info#info
         p.info__title Владимир Астаханов
         p.info__text Я занимаюсь разработкой современных сайтов и&nbsp;приложений. Мне&nbsp;нравится делать интересные и&nbsp;современные проекты.
         p.info__ps Этот сайт я&nbsp;сделал в&nbsp;рамках обучения в&nbsp;Школе онлайн образования LoftSchool. Чуть позже я&nbsp;освежу в&nbsp;нём свой&nbsp;контент. А&nbsp;пока посмотрите, как&nbsp;тут всё&nbsp;классно и&nbsp;красиво!
+include ./triangles.pug

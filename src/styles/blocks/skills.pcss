@@ -1,22 +1,16 @@
 .skills {
-    padding-bottom: 340px;
-    position: relative;
+  padding-top: 145px;
+  padding-bottom: 340px;
+  position: relative;
 }
 
 .skills__wrapper {
     display: flex;
-}
-
-.skills__img {
-    width: 712px;
-    height: 627px;
-    position: absolute;
-    top: 12%;
-    left: 0;
+    flex-direction: column;
 }
 
 .skills__info {
-    margin-left: 504px;
+  margin-left: 34.1%;
 }
 
 .skills__title {
@@ -35,7 +29,21 @@
 
 .skills__chart {
   margin-bottom: -52px;
-  margin-left: 127px;
+  margin-left: 13.2%;
+  position: relative;
+
+  &:before {
+    content: '';
+    width: 712px;
+    height: 627px;
+    background-image: url('../images/content/backpack.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate(-120%, -20%);
+  }
 }
 
 .skills__chart-title {
@@ -60,7 +68,7 @@
     align-items: center;
     width: 150px;
     height: 150px;
-    margin-right: 54px;
+    margin-right: 6.4%;
 }
 
 .skills__chart-progress:last-child {
@@ -80,60 +88,60 @@
 }
 
 .skills__chart-progress  {
-  & svg circle:nth-child(2) {
+  & svg circle:nth-child(1) {
     stroke-width: 15;
   }
 
   &--html {
-    & svg circle:nth-child(2) {
+    & svg circle:nth-child(1) {
       stroke-dashoffset: calc(440 - (440*25)/100);
     }
   }
 
   &--css {
-    & svg circle:nth-child(2) {
+    & svg circle:nth-child(1) {
       stroke-dashoffset: calc(440 - (440*13)/100);
     }
   }
 
   &--javascript {
-    & svg circle:nth-child(2) {
+    & svg circle:nth-child(1) {
       stroke-dashoffset: calc(440 - (440*75)/100);
     }
   }
 
   &--jquery-vue {
-    & svg circle:nth-child(2) {
+    & svg circle:nth-child(1) {
       stroke-dashoffset: calc(440 - (440*25)/100);
     }
   }
 
   &--git {
-    & svg circle:nth-child(2) {
+    & svg circle:nth-child(1) {
       stroke-dashoffset: calc(440 - (440*13)/100);
     }
   }
 
   &--terminal {
-    & svg circle:nth-child(2) {
+    & svg circle:nth-child(1) {
       stroke-dashoffset: calc(440 - (440*25)/100);
     }
   }
 
   &--gulp {
-    & svg circle:nth-child(2) {
+    & svg circle:nth-child(1) {
       stroke-dashoffset: calc(440 - (440*50)/100);
     }
   }
 
   &--webpack {
-    & svg circle:nth-child(2) {
+    & svg circle:nth-child(1) {
       stroke-dashoffset: calc(440 - (440*35)/100);
     }
   }
 }
 
-.skills__chart-progress svg circle:nth-child(3) {
+.skills__chart-progress svg circle:nth-child(2) {
   stroke-dashoffset: 0;
   stroke: $color-river-bed;
   opacity: 0.1;

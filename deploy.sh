@@ -7,7 +7,7 @@ set -e
 rm -rf dist
 
 ## build
-npm run build
+yarn build
 
 ## navigate into the build output directory
 cd dist
@@ -20,7 +20,7 @@ git add -A
 git commit -m 'deploy'
 
 ## if you are deploying to https://<USERNAME>.github.io
-#git push -f https://github.com/<USERNAME>/<REPO> master:gh-pages
+git push -f https://github.com/Alexandra08s/romanova-ls master:gh-pages
 
 ## if you are deploying to https://<USERNAME>.github.io/<REPO>
 # git push -f https://<USERNAME>.github.io/<REPO> master:gh-pages

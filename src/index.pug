@@ -8,8 +8,10 @@ html(lang="en")
     meta(http-equiv="X-UA-Compatible", content="ie=edge")
     title Portfolio | main page
   body
-    include ./blocks/header.pug
-    include ./blocks/skills.pug
-    include ./blocks/examples.pug
-    include ./blocks/reviews.pug
-    include ./blocks/footer.pug 
+    .wrapper
+      .maincontent
+        include ./blocks/welcome.pug
+        include ./blocks/skills.pug
+        include ./blocks/examples.pug
+        include ./blocks/reviews.pug
+        include ./blocks/footer.pug 

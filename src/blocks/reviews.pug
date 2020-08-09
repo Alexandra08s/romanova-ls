@@ -14,19 +14,21 @@
     }
   ]
 
-section.reviews#reviews 
+section.reviews#reviews
+  include ./triangles.pug
   .container
     .reviews__wrapper
       h2.section__title.reviews__title Что обо мне говорят
-      .reviews__contols
+      .reviews__controls
         button(type="button").reviews__button.reviews__button-prev
         button(type="button").reviews__button.reviews__button-next
     ul.reviews__list
       each reviewItem in reviews
         li.reviews__item
           p.reviews__text= reviewItem.text
-          .reviews__author-wrapper
-            +image(`content/reviews/${reviewItem.img}.png`, 'reviews__img', 75, 75)
+          .reviews__author-block
+            .reviews__img-wrapper
+              +image(`content/reviews/${reviewItem.img}.png`, 'reviews__img', 75, 75)
             .reviews__author
               p.reviews__author-name= reviewItem.name
               p.reviews__author-position=  reviewItem.position

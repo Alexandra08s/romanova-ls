@@ -1,9 +1,6 @@
-header#header
-  .container
-    include ./top-bar.pug
-    .header__wrapper
-      p.header__pretitle Личный сайт веб&#8209разработчика
-      p.header__title Владимир Астаханов
-    .header__down-arrow
-      a(href="#info").header__down-arrow-link.link Скролл
-  include ./info.pug 
+header
+  .header__wrapper
+    p.header__logo ВА
+    +nav-list('header__menu-list', 'header__menu-item')
+    +social-list('header__social-list', 'header__social-item', 'header__social-img', false)
+    include ./navigation.pug 
