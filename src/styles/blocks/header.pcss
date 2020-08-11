@@ -26,20 +26,23 @@
     padding-bottom: 35px;
     padding-top: 35px;
     border-bottom: 3px solid transparent;
+    transition: text-shadow .3s;
+
+    &--active {
+      color: $color-electric-violet;
+      border-bottom: 3px solid $color-electric-violet;
+    }
 
     &:hover {
-        color: $color-electric-violet;
-        border-bottom: 3px solid $color-electric-violet;
+      text-shadow: 0 0 0.72px $color-river-bed, 0 0 0.72px $color-river-bed;
     }
 
      &:focus {
-        color: $color-electric-violet;
-        border-bottom: 3px solid $color-electric-violet;
+      text-shadow: 0 0 0.72px $color-river-bed, 0 0 0.72px $color-river-bed;
     }
 
     &:active {
-        color: $color-electric-violet;
-        border-bottom: 3px solid $color-electric-violet;
+      text-shadow: 0 0 0.72px $color-river-bed, 0 0 0.72px $color-river-bed;
     }
 }
 

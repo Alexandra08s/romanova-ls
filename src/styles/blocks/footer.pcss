@@ -2,22 +2,80 @@ footer {
     padding-top: 62px;
     padding-bottom: 74px;
     background-color: $color-shark;
+
+     @include phones {
+      padding-bottom: 6.21rem;
+      padding-top: 3.79rem;
+    }
+}
+
+.footer__container {
+    display: flex;
+    justify-content: space-between;
+
+    @include tablets {
+      flex-wrap: wrap;
+      justify-content: unset;
+    }
+
+    @include phones {
+      flex-direction: column;
+    }
 }
 
 .footer__wrapper {
     display: flex;
+    width: 33%;
+
+    @include desktop {
+      flex-direction: column;
+      width: 26%;
+      margin-right: 2%;
+    }
+
+    @include tablets {
+      margin-right: 1%;
+      width: 33%;
+      margin-bottom: 6.5%;
+    }
+
+    @include phones {
+      width: 100%;
+    }
 }
 
 .footer__copyright {
     font-weight: 600;
     font-size: 48px;
     line-height: 65px;
-    margin-right: 56px;
+    margin-right: 15.5%;
+
+    @include desktop {
+      margin-bottom: 24px;
+      margin-right: 0;
+    }
+
+    @include tablets {
+      line-height: 0.7;
+      margin-bottom: 1.29rem;
+    }
+
+    @include phones {
+      line-height: 0.7;
+      margin-bottom: 1.86rem;
+    }
 }
 
 .footer__info {
-    width: 12%;
-    margin-right: 141px;
+    width: 24%;
+
+    @include desktop {
+      width: 38%
+    }
+
+    @include phones {
+      width: 100%
+    }
 }
 
 .footer__author {
@@ -27,21 +85,68 @@ footer {
     line-height: 30px;
     font-weight: bold;
     margin-bottom: 16px;
+
+    @include desktop {
+      margin-bottom: 1.29rem;
+    }
+
+    @include phones {
+      line-height: 1.79rem;
+      margin-bottom: 0.64rem;
+    }
 }
 
 .footer__descr {
     line-height: 30px;
+
+    @include tablets {
+      line-height: 24px;
+    }
+
+    @include phones {
+      line-height: 1.36rem;
+      margin-bottom: 3.14rem;
+    }
 }
 
 .footer__block {
-    margin-right: 75px;
+    width: 33%;
+
+    @include desktop {
+      width: 36%;
+    }
+
+    @include tablets {
+      width: 53%;
+    }
+
+    @include phones {
+      width: 100%;
+    }
 }
 
 .footer__nav-list {
     display: flex;
     margin-right: -31px;
     margin-left: -31px;
-    margin-bottom: 12px;
+    margin-bottom: 47px;
+
+    @include desktop {
+      margin-bottom: 48px;
+    }
+
+    @include tablets {
+      margin-right: 0;
+      margin-left: 0;
+      margin-bottom: 38px;
+      justify-content: space-between;
+    }
+
+    @include phones {
+      margin-bottom: 1.93rem;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
 }
 
 .footer__nav-item {
@@ -49,19 +154,34 @@ footer {
     line-height: 22px;
     padding-right: 31px;
     padding-left: 31px;
-    padding-bottom: 35px;
     border-bottom: 3px solid transparent;
 
+    @include tablets {
+      line-height: 19px;
+      padding-right: 0;
+      padding-left: 0;
+      font-size: 1rem;
+    }
+
+    @include phones {
+      width: 50%;
+      padding-bottom: 1.57rem;
+    }
+
+    &--active {
+      color: $color-electric-violet;
+    }
+
     &:hover {
-        color: $color-electric-violet;
+      text-shadow: 0 0 0.72px $color-white, 0 0 0.72px $color-white;
     }
 
     &:focus {
-        color: $color-electric-violet;
+      text-shadow: 0 0 0.72px $color-white, 0 0 0.72px $color-white;
     }
 
     &:active {
-        color: $color-electric-violet;
+      text-shadow: 0 0 0.72px $color-white, 0 0 0.72px $color-white;
     }
 }
 
@@ -70,6 +190,22 @@ footer {
     opacity: 0.45;  
     margin-bottom: 40px;
     max-width: 69%;
+    line-height: 30px;
+
+    @include desktop {
+      margin-bottom: 30px;
+      max-width: 82%;
+    }
+
+    @include tablets {
+      margin-bottom: 1.5rem;
+      max-width: 100%;
+      line-height: 1.71rem;
+    }
+
+    @include phones {
+      margin-bottom: 1.57rem;
+    }
 }
 
 .footer__social-list {
@@ -77,6 +213,15 @@ footer {
     justify-content: space-between;
     max-width: 55%;
     align-items: center;
+
+    @include desktop {
+      max-width: 70.5%;
+    }
+
+    @include phones {
+      max-width: 100%;
+      margin-bottom: 2.21rem;
+    }
 }
 
 .footer__social-link {
@@ -86,19 +231,35 @@ footer {
     display: block;
 
     &--inst {
-        padding: 13.5px;
-    }
+      padding: 13.5px;
 
-    &--vk {
-        padding: 10px;
+      @include tablets {
+        padding: 0.97rem;
+      }
     }
 
     &--github {
         padding: 12px;
+
+        @include tablets {
+        padding: 0.87rem;
+      }
+    }
+
+    &--vk {
+        padding: 10px;
+
+        @include tablets {
+        padding: 0.72rem;
+      }
     }
 
     &--email {
         padding: 13px;
+
+        @include tablets {
+        padding: 0.92rem;
+      }
     }
 
     &:hover {
@@ -138,29 +299,64 @@ footer {
     display: block;
 
     &--inst {
-        width: 21px;
-        height: 21px;
+      width: 21px;
+      height: 21px;
+
+      @include tablets {
+      width: 1.5rem;
+      height: 1.5rem;
     }
+  }
 
     &--vk {
-        width: 28px;
-        height: 28px;
+      width: 28px;
+      height: 28px;
+
+      @include tablets {
+        width: 2rem;
+        height: 2rem;
+      }
     }
 
     &--github {
-        width: 24px;
-        height: 24px;
+      width: 24px;
+      height: 24px;
+
+      @include tablets {
+        width: 1.7rem;
+        height: 1.7rem;
+      }
     }
 
     &--email {
-        width: 22px;
-        height: 22px;
+      width: 22px;
+      height: 22px;
+
+      @include tablets {
+        width: 1.6rem;
+        height: 1.6rem;
+      }
     }
 }
 
 .footer__quote {
-    width: 38%;
+    width: 33%;
     padding-top: 70px;
+
+    @include desktop {
+      width: 47%;
+    }
+
+    @include tablets {
+      padding-top: 0;
+      width: 65%;
+      margin-left: 34%;
+    }
+
+    @include phones {
+      width: 100%;
+      margin-left: 0;
+    }
 }
 
 .footer__quote-expr {
@@ -168,11 +364,32 @@ footer {
     margin-bottom: 31px;
     color: $color-white;
     opacity: 0.45;
+    width: 96%;
+
+    @include desktop {
+      margin-bottom: 27px;
+    }
+
+    @include tablets {
+      line-height: 1.71rem;
+      margin-bottom: 1.14rem;
+    }
+
+    @include phones {
+      margin-bottom: 2.14rem;
+    }
 }
 
 .footer__quote-author {
     font-style: italic;
     color: $color-white;
-    font-size: 16px;
     line-height: 22px;
+
+    @include desktop {
+      line-height: 30px;
+    }
+
+    @include tablets {
+      line-height: 1.36rem;
+    }
 }
