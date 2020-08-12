@@ -1,39 +1,111 @@
 .examples {
-    padding-bottom: 126px;
+  padding-bottom: 126px;
+
+  @include desktop {
+    padding-bottom: 6.27rem;
+  }
+
+  @include tablets {
+    padding-bottom: 7.14rem;
+  }
+
+  @include phones {
+    padding-bottom: 6.71rem;
+  }
 }
 
 .examples__title {
   margin-bottom: 83px;
+
+  @include desktop {
+    margin-bottom: 5.53rem;
+  }
+
+  @include tablets {
+    margin-bottom: 3.43rem;
+  }
+
+  @include phones {
+    margin-bottom: 1.71rem;
+    text-align: center;
+  }
 }
 
 .examples__wrapper {
   display: flex;
+
+  @include tablets {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 .examples__slider {
   position: relative;
   margin-right: 156px;
   width: 66%;
+  
+  @include desktop {
+    width: 56%;
+    margin-right: 10.9%;
+  }
+
+  @include tablets {
+    width: 87.8%;
+    margin-bottom: 3.93rem;
+  }
 }
 
-.examples__slider-item {
-  display: none;
+.examples__slider-img-wrapper {
+  max-width: 975px;
+  max-height: 549px;
+  overflow: hidden;
+
+  @include desktop {
+    max-width: unset;
+    max-height: unset;
+  }
 }
 
-.examples__slider-item.active {
-  display: block;
+.examples__slider-img {
+  width: 100%;
+  height: 100%;
+  /* max-width: 100%;
+  height: auto; */
 }
 
-.examples__slider-list--min {
+.examples__slider-list {
   position: absolute;
-  top: 143px;
+  bottom: 0;
   right: -2px;
   display: flex;
   align-items: center;
   flex-direction: column;
+
+  @include desktop {
+    right: 0%;
+  }
+
+  @include phones {
+    display: none;
+  }
 }
 
-.examples__slider-item--min.active {
+.examples__slider-item {
+  @include desktop {
+    max-width: 7.73rem;
+    max-height: 4.33rem;
+  }
+}
+
+.examples__slider-img--min {
+  @include desktop {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.examples__slider-item.active {
   border: 3px solid $color-golden-grass;
 }
 
@@ -46,6 +118,23 @@
   line-height: 48px;
   color: $color-mystic;
   z-index: -1;
+
+  @include desktop {
+    font-size: 20rem;
+    line-height: 3.2rem;
+    right: -20%;
+    top: 55.5%;
+  }
+
+  @include tablets {
+    font-size: 21.43rem;
+    line-height: 29.21rem;
+    top: 13.5%;
+  }
+
+  @include phones {
+    display: none;
+  }
 }
 
 .examples__slider-controls {
@@ -59,6 +148,21 @@
   height: 53px;
   background-color: $color-shark;
   position: relative;
+
+  @include desktop {
+    width: 2.33rem;
+    height: 2.33rem;
+  }
+
+  @include tablets {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  @include phones {
+    width: 3.93rem;
+    height: 3.93rem;
+  }
 
     &--prev {
       &:before {
@@ -80,11 +184,42 @@
       width: 18px;
       height: 10px;
       transform: translate(-50%, -50%);
+
+      @include desktop {
+        width: 0.47rem;
+        height: 0.73rem;
+      }
+
+      @include tablets {
+        width: 0.5rem;
+        height: 0.79rem;
+      }
+
+      @include phones {
+        width: 0.79rem;
+        height: 1.29rem;
+      }
   }
 }
 
 .examples__info {
   width: 22%;
+
+  @include desktop {
+    width: 30%;
+  }
+
+  @include tablets {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  @include phones {
+    width: 100%;
+    align-items: flex-start;
+  }
 }
 
 .examples__info-tags {
@@ -92,11 +227,35 @@
   margin-left: -4px;
   margin-right: -4px;
   margin-bottom: 35px;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 20px;
+
+  @include desktop {
+    font-size: 1rem;
+    line-height: 1.33rem;
+    margin-left: -1.5%;
+    margin-right: -1.5%;
+    margin-bottom: 2.33rem;
+  }
+
+  @include tablets {
+    font-size: 1.07rem;
+    line-height: 1.43rem;
+  }
+
+  @include phones {
+  }
 }
 
 .examples__info-tag {
   padding-left: 4px;
   padding-right: 4px;
+
+  @include desktop {
+    padding-left: 1.5%;
+    padding-right: 1.5%;
+  }
 }
 
 .examples__info-tag--name {
@@ -110,6 +269,23 @@
   font-size: 30px;
   line-height: 41px;
   margin-bottom: 35px;
+
+  @include desktop {
+    font-size: 2rem;
+    line-height: 2.73rem;
+    margin-bottom: 2.33rem;
+  }
+
+  @include tablets {
+    font-size: 2.14rem;
+    line-height: 2.93rem;
+    text-align: center;
+  }
+
+  @include phones {
+    font-size: 1.71rem;
+    line-height: 2.14rem;
+  }
 }
 
 .examples__info-text {
@@ -117,6 +293,22 @@
   line-height: 30px;
   opacity: 0.8;
   margin-bottom: 45px;
+
+  @include desktop {
+    font-size: 1.07rem;
+    line-height: 2rem;
+    margin-bottom: 3rem;
+  }
+
+  @include tablets {
+    font-size: 1rem;
+    line-height: 1.71rem;
+    text-align: center;
+  }
+
+  @include phones {
+    text-align: left;
+  }
 }
 
 .examples__info-link {
@@ -126,6 +318,19 @@
   line-height: 25px;
   position: relative;
   padding-left: 39px;
+
+  @include desktop {
+    font-size: 1.2rem;
+    line-height: 1.67rem;
+  }
+
+  @include tablets {
+    font-size: 1rem;
+    line-height: 1.36rem;
+  }
+
+  @include phones {
+  }
 
   &:before {
     content: '';

@@ -3,23 +3,16 @@ section.examples#examples
     h2.section__title.examples__title Мои работы
     .examples__wrapper
       .examples__slider
+        .examples__slider-img-wrapper
+          +image('content/examples/preview-1.jpg', 'examples__slider-img')
         ul.examples__slider-list
-          li.examples__slider-item.active
-            +image('content/examples/preview-1.jpg', 'examples__slider-img', 975, 549)
           li.examples__slider-item
-            +image('content/examples/preview-2.jpg', 'examples__slider-img', 975, 549)
-          li.examples__slider-item
-            +image('content/examples/preview-3.jpg', 'examples__slider-img', 975, 549)
-          li.examples__slider-item
-            +image('content/examples/preview-4.jpg', 'examples__slider-img', 975, 549)
-        ul.examples__slider-list--min
-          li.examples__slider-item--min
             +image('content/examples/preview-1--min.jpg', 'examples__slider-img--min', 178, 100)
-          li.examples__slider-item--min
+          li.examples__slider-item
             +image('content/examples/preview-2--min.jpg', 'examples__slider-img--min', 178, 100)
-          li.examples__slider-item--min
+          li.examples__slider-item
             +image('content/examples/preview-3--min.jpg', 'examples__slider-img--min', 178, 100)
-          li.examples__slider-item--min.active
+          li.examples__slider-item.active
             +image('content/examples/preview-4--min.jpg', 'examples__slider-img--min', 178, 100)
         .examples__slider-num 2
         .examples__slider-controls
