@@ -15,10 +15,13 @@ body {
   font-family: 'Open Sans', Helvetica, sans-serif;
   font-size: 16px;
   line-height: 1.42;
+  position: relative;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: $color-river-bed;
   background-color: $color-white;
+  max-height: unset;
+  overflow-y: auto;
 }
 
 .wrapper {
@@ -117,4 +120,10 @@ img {
   overflow: hidden;
   border: 0;
   clip: rect(0 0 0 0)
+}
+
+body.fixed {
+  position: fixed;
+  max-height: 100vh;
+  overflow-y: hidden;
 }

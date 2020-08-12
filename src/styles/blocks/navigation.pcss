@@ -1,0 +1,142 @@
+.nav {
+  display: none;
+
+  @include tablets {
+    display: block;
+    flex-grow: 0;
+  }
+}
+
+.nav__btn {
+  position: relative;
+  z-index: 15;
+  background: svg-load('menu.svg', fill=$color-river-bed, width=100%, height=100%);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  width: 2rem;
+  height: 1.67rem;
+}
+
+.nav__container {
+  opacity: 0;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  max-height: 100vh;
+  overflow: hidden;
+  display: flex;
+  padding-top: 3.86rem;
+  flex-wrap: wrap;
+
+  &:before {
+    position: fixed;
+    top: 0;
+    left: 0%;
+    background-color: $color-white;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  &:after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 57%;
+    height: 100vh;
+    background-image: url('../images/background-reviews.jpg');
+    background-position-x: 72%;
+    background-size: cover;
+
+    @include phones {
+      width: 0%;
+    }
+  }
+}
+
+.nav__check:checked ~ .nav__btn {
+  background: svg-load('cross.svg', fill=$color-river-bed, width=100%, height=100%);
+  width: 20px;
+  height: 20px;
+}
+
+.nav__check:checked ~ .nav__container:before {
+  content: '';
+}
+
+.nav__check:checked ~ .nav__container {
+  opacity: 1;
+  z-index: 10;
+}
+
+.nav__block {
+  position: relative;
+  /* z-index: 15; */
+  flex-shrink: 20;
+  flex-grow: 3;
+  flex-basis: 0;
+
+  @include phones {
+    display: none;
+  }
+}
+
+.nav__logo {
+  font-weight: 800;
+  font-size: 2.4rem;
+  line-height: 3.27rem;
+}
+
+.nav__menu {
+  position: relative;
+  /* z-index: 15; */
+  padding-left: 7%;
+  padding-top: 25.5%;
+  flex-shrink: 0;
+  flex-grow: 2;
+  flex-basis: 0;
+}
+
+.nav__menu-list {
+  font-weight: 600;
+  font-size: 1.2rem;
+  line-height: 1.67rem;
+  margin-bottom: 35.1%;
+
+  @include phones {
+    font-size: 1.29rem;
+    line-height: 1.79rem;
+    margin-bottom: 45.4%;
+  }
+}
+
+.nav__menu-item {
+  margin-bottom: 1.53rem;
+
+  @include phones {
+    margin-bottom: 1.64rem;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.nav__social-list {
+  display: flex;
+  align-items: center;
+  margin-left: -6.5%;
+  margin-right: -6.5%;
+}
+
+.nav__social-item {
+  padding-left: 6.5%;
+  padding-right: 6.5%;
+}
+
+.nav__social-img {
+  fill: $color-river-bed;
+}

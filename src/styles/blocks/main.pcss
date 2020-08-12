@@ -6,52 +6,125 @@
   min-height: 650px;
   padding-top: 58px;
   padding-bottom: 20px;
+
+  @include desktop {
+    padding-top: 3.86rem;
+    min-height: 43.33rem;
+  }
+
+  @include tablets {
+    justify-content: flex-start;
+    padding-bottom: 0;
+  }
 }
 
 .main__wrapper {
-    display: flex;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  align-items: center;
+  max-width: 10%;
+
+  @include desktop {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+  }
+
+  @include tablets {
     flex-direction: column;
-    margin: 0 auto;
     align-items: center;
-    max-width: 10%;
+    max-width: 100%;
+  }
 }
 
 .main__pretitle {
-    opacity: 0.5;
-    font-size: 18px;
-    font-weight: 600;
-    line-height: 30px;
+  opacity: 0.5;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 30px;
+  text-align: center;
+  margin-bottom: 24px;
+
+  @include desktop {
+    text-align: right;
+    margin-right: 29.8%;
+    font-size: 1.2rem;
+    line-height: 2rem;
+    margin-bottom: 0;
+  }
+
+  @include tablets {
     text-align: center;
-    margin-bottom: 24px;
+    margin-right: 0;
+    font-size: 1.14rem;
+    line-height: 2.14rem;
+    margin-bottom: 3.3%;
+    max-width: 30%;
+  }
+
+  @include phones {
+    font-size: 1rem;
+    line-height: 1.36rem;
+    max-width: 50%;
+  }
 }
 
 .main__title {
-    font-weight: 800;
-    font-size: 72px;
-    line-height: 60px;
-    text-align: center;
+  font-weight: 800;
+  font-size: 72px;
+  line-height: 60px;
+  text-align: center;
+
+  @include desktop {
+    font-size: 4.8rem;
+    line-height: 4rem;
+  }
+
+  @include tablets {
+    font-size: 3.43rem;
+    line-height: 3.43rem;
+  }
+
+  @include phones {
+    font-size: 2.57rem;
+  }
 }
 
 .main__down-arrow {
-    font-weight: 600;
-    font-size: 18px;
-    line-height: 25px;
-    display: flex;
-    justify-content: center;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 25px;
+  display: flex;
+  justify-content: center;
+
+  @include desktop {
+    font-size: 1.2rem;
+    line-height: 2rem;
+  }
+
+  @include tablets {
+    display: none;
+  }
 }
 
 .main__down-arrow-link {
-    position: relative;
+  position: relative;
 
-        &:after {
-        content: '';
-        position: absolute;
-        width: 13px;
-        height: 13px;
-        top: 22%;
-        right: -43%;
-        background: svg-load('arrows-down.svg', fill=$color-river-bed, width=100%, height=100%);
-        background-repeat: no-repeat;
-        background-size: cover;
+    &:after {
+      content: '';
+      position: absolute;
+      width: 13px;
+      height: 13px;
+      top: 22%;
+      right: -43%;
+      background: svg-load('arrows-down.svg', fill=$color-river-bed, width=100%, height=100%);
+      background-repeat: no-repeat;
+      background-size: cover;
+
+      @include desktop {
+        width: 0.93rem;
+        height: 0.93rem;
     }
+  }
 }
