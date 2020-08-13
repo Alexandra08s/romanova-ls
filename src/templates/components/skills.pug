@@ -1,0 +1,17 @@
+script(type="text/x-template")#skills-block
+  .skills__chart
+    skills-chart
+    skills-chart
+  svg.visually-hidden
+    defs
+      linearGradient#linear
+        stop(offset='27%' stop-color='#4A00ED')
+        stop(offset='70%' stop-color='#7C00EA')
+
+script(type="text/x-template")#skills-chart
+  p.skills__chart-title Front-end
+    .skills__chart-wrapper
+      skills-progress
+
+script(type="text/x-template")#skills-progress
+  +skill-progress-bar('HTML5', 'html')

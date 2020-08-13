@@ -3,22 +3,5 @@ section.skills#skills
     .skills__info
       h2.section__title.skills__title Чем я могу быть полезен вам
       p.skills__text Этот сайт я&nbsp;сделал в&nbsp;рамках обучения в&nbsp;Школе онлайн образования LoftSchool. Чуть позже я&nbsp;освежу в&nbsp;нём свой&nbsp;контент. А&nbsp;пока посмотрите, как&nbsp;тут всё&nbsp;классно и&nbsp;красиво!
-      .skills__chart
-        p.skills__chart-title Front-end
-        .skills__chart-wrapper
-          svg.visually-hidden
-            defs
-              linearGradient#linear
-                stop(offset='27%' stop-color='#4A00ED')
-                stop(offset='70%' stop-color='#7C00EA')
-          +skill-progress-bar('HTML5', 'html')
-          +skill-progress-bar('CSS3', 'css')
-          +skill-progress-bar('JavaScript', 'javascript')
-          +skill-progress-bar('Jquery и\u00A0Vue.js', 'jquery-vue')
-        p.skills__chart-title Workflow
-        .skills__chart-wrapper
-          +skill-progress-bar('GIT', 'git')
-          +skill-progress-bar('Terminal', 'terminal')
-          +skill-progress-bar('Gulp', 'gulp')
-          +skill-progress-bar('Webpack', 'webpack')
+      #skills-component
     .skills__img

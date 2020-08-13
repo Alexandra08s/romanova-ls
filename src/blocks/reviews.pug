@@ -28,7 +28,7 @@ section.reviews#reviews
           p.reviews__text= reviewItem.text
           .reviews__author-block
             .reviews__img-wrapper
-              +image(`content/reviews/${reviewItem.img}.png`, 'reviews__img', 75, 75)
+              +image(`content/reviews/${reviewItem.img}.png`, 'reviews__img')
             .reviews__author
               p.reviews__author-name= reviewItem.name
               p.reviews__author-position=  reviewItem.position
