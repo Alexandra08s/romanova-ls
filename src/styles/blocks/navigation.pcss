@@ -23,7 +23,7 @@
   top: 0;
   right: 0;
   bottom: 0;
-  left: 0;
+  left: 100%;
   max-height: 100vh;
   overflow: hidden;
   display: flex;
@@ -33,7 +33,7 @@
   &:before {
     position: fixed;
     top: 0;
-    left: 0%;
+    left: 100%;
     background-color: $color-white;
     width: 100vw;
     height: 100vh;
@@ -44,8 +44,8 @@
     content: '';
     position: fixed;
     top: 0;
-    left: 0;
-    width: 57%;
+    left: 100%;
+    width: 55.3vw;
     height: 100vh;
     background-image: url('../images/background-reviews.jpg');
     background-position-x: 72%;
@@ -65,16 +65,21 @@
 
 .nav__check:checked ~ .nav__container:before {
   content: '';
+  left: 0;
+}
+
+.nav__check:checked ~ .nav__container:after {
+  left: 0;
 }
 
 .nav__check:checked ~ .nav__container {
   opacity: 1;
   z-index: 10;
+  left: 0;
 }
 
 .nav__block {
   position: relative;
-  /* z-index: 15; */
   flex-shrink: 20;
   flex-grow: 3;
   flex-basis: 0;
@@ -92,7 +97,6 @@
 
 .nav__menu {
   position: relative;
-  /* z-index: 15; */
   padding-left: 7%;
   padding-top: 25.5%;
   flex-shrink: 0;
@@ -128,13 +132,13 @@
 .nav__social-list {
   display: flex;
   align-items: center;
-  margin-left: -6.5%;
-  margin-right: -6.5%;
+  margin-left: -2.5vw;
+  margin-right: -2.5vw;
 }
 
 .nav__social-item {
-  padding-left: 6.5%;
-  padding-right: 6.5%;
+  padding-left: 2.5vw;
+  padding-right: 2.5vw;
 }
 
 .nav__social-img {
