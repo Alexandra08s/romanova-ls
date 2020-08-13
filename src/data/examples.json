@@ -1,0 +1,34 @@
+[
+  {
+    "id": 1,
+    "title": "Сайт школы образования",
+    "skills": ["HTML", "CSS", "Javascript"],
+    "img": "content/examples/preview-1.jpg",
+    "link": "https://learn.javascript.ru/array-methods",
+    "desc": "Этот парень проходил обучение веб‑разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!"
+  },
+  {
+    "id": 2,
+    "title": "Сайт сайт сайт",
+    "skills": ["HTML", "HTML", "HTML"],
+    "img": "content/examples/preview-2.jpg",
+    "link": "https://htmlacademy.ru/",
+    "desc": "Этот парень проходил обучение веб‑разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!"
+  },
+  {
+    "id": 3,
+    "title": "Школы школы школы",
+    "skills": ["CSS", "CSS", "CSS"],
+    "img": "content/examples/preview-3.jpg",
+    "link": "https://learn.javascript.ru/object",
+    "desc": "Этот парень проходил обучение веб‑разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!"
+  },
+  {
+    "id": 4,
+    "title": "Образования образования",
+    "skills": ["Javascript", "Javascript", "Javascript"],
+    "img": "content/examples/preview-4.jpg",
+    "link": "https://regex101.com/",
+    "desc": "Этот парень проходил обучение веб‑разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!"
+  }
+]

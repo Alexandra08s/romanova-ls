@@ -1,31 +1,4 @@
 section.examples#examples 
   .container
     h2.section__title.examples__title Мои работы
-    .examples__wrapper
-      .examples__slider
-        .examples__slider-img-wrapper
-          +image('content/examples/preview-1.jpg', 'examples__slider-img')
-        ul.examples__slider-list
-          li.examples__slider-item
-            +image('content/examples/preview-1--min.jpg', 'examples__slider-img--min')
-          li.examples__slider-item
-            +image('content/examples/preview-2--min.jpg', 'examples__slider-img--min')
-          li.examples__slider-item
-            +image('content/examples/preview-3--min.jpg', 'examples__slider-img--min')
-          li.examples__slider-item.active
-            +image('content/examples/preview-4--min.jpg', 'examples__slider-img--min')
-        .examples__slider-num 2
-        .examples__slider-controls
-          button(type="button").examples__slider-control.examples__slider-control--prev
-          button(type="button").examples__slider-control.examples__slider-control--next
-      .examples__info
-        ul.examples__info-tags
-          li.examples__info-tag 
-            p.examples__info-tag--name HTML
-          li.examples__info-tag 
-            p.examples__info-tag--name CSS
-          li.examples__info-tag 
-            .examples__info-tag--name Javascript
-        p.examples__info-name Сайт школы образования
-        p.examples__info-text Этот парень проходил обучение веб&#8209разработке не&nbsp;где-то, а&nbsp;в&nbsp;LoftSchool! 2&nbsp;месяца только самых тяжелых испытаний и&nbsp;бессонных ночей!
-        a(link="#", target="_blank").examples__info-link.link Посмотреть сайт
+    #examples-slider-component

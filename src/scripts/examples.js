@@ -38,17 +38,17 @@ const skillsChart = {
 }
 
 new Vue({
-  el: '#skills-component',
+  el: '#examples-slider-component',
   components: {
-    skillsChart
+    examplesSliderImg
   },
   data() {
     return {
-      skills: []
+      examples: []
     }
   },
   created() {
-    this.skills = require('../data/skills.json')
+    this.examples = require('../data/examples.json')
   },
-  template: '#skills-block'
+  template: '#examples-slider'
 })
