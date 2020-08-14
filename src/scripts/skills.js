@@ -1,5 +1,4 @@
 import Vue from "vue";
-// import { component } from "vue/types/umd";
 
 const skillsProgress = {
   props: { 
@@ -11,11 +10,10 @@ const skillsProgress = {
   methods: {
     drawPercentageCircle() {
       const circle = this.$refs["circle-progress"]
-      const dashOffset = getComputedStyle(circle).getPropertyValue("stroke-dashoffset").replace(/px/, '')
-      const newDashOffset = dashOffset - dashOffset*this.skill.percent/100
+      const dashOffset = parseInt(getComputedStyle(circle).getPropertyValue("stroke-dashoffset"), 10)
+      const newDashOffset = dashOffset - dashOffset * this.skill.percent / 100
   
-      circle.style.dashOffset = newDashOffset
-      debugger
+      circle.style.strokeDashoffset = newDashOffset
     }
   },
   mounted() {

@@ -80,6 +80,35 @@
   @include phones {
     padding-bottom: 58%;
   }
+
+  &:after {
+    content: attr(data-slide);
+    position: absolute;
+    top: 34.5%;
+    right: -16%;
+    font-weight: 800;
+    font-size: 400px;
+    line-height: 48px;
+    color: $color-mystic;
+    z-index: -1;
+
+    @include desktop {
+      font-size: 20rem;
+      line-height: 3.2rem;
+      right: -20%;
+      top: 55.5%;
+    }
+
+    @include tablets {
+      font-size: 21.43rem;
+      line-height: 29.21rem;
+      top: 13.5%;
+    }
+
+    @include phones {
+      display: none;
+    }
+  }
 }
 
 .examples__slider-img {
@@ -123,34 +152,6 @@
 
 .examples__slider-item.active {
   border: 3px solid $color-golden-grass;
-}
-
-.examples__slider-num {
-  position: absolute;
-  top: 34.5%;
-  right: -16%;
-  font-weight: 800;
-  font-size: 400px;
-  line-height: 48px;
-  color: $color-mystic;
-  z-index: -1;
-
-  @include desktop {
-    font-size: 20rem;
-    line-height: 3.2rem;
-    right: -20%;
-    top: 55.5%;
-  }
-
-  @include tablets {
-    font-size: 21.43rem;
-    line-height: 29.21rem;
-    top: 13.5%;
-  }
-
-  @include phones {
-    display: none;
-  }
 }
 
 .examples__slider-controls {

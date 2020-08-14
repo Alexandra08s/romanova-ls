@@ -1,48 +1,32 @@
-Общий контейнер виджета
-Компонент с картинкой текущего слайда
-Превью всех слайдов
-Кнопки вперед/назад
-Текстовая информация
-Теги
-
-script(type="text/x-template")#skills-block
-  .skills__chart
-    skills-chart(
-      v-for="category in skills" 
-      :key="category.id"
-      :category="category"
-      )
-  
 script(type="text/x-template")#examples-slider
 .examples__wrapper
   .examples__slider
-    .examples__slider-img-wrapper
-      examples-slider-img
-    ul.examples__slider-list
-      li.examples__slider-item(v-for="" :key="")
-      examples-slider-img-min
-    .examples__slider-num 2
-    .examples__slider-controls
-      button(type="button").examples__slider-control.examples__slider-control--prev
-      button(type="button").examples__slider-control.examples__slider-control--next
+    examples-slider-img
+  examples-slider-info
+
+
+script(type="text/x-template")#examples-slider-img
+  .examples__slider-img-wrapper(data-slide="2")
+    +image(.img, 'examples__slider-img')
+
+script(type="text/x-template")#examples-slider-img-min
+  ul.examples__slider-list
+    li.examples__slider-item(v-for="" :key="")
+    +image('content/examples/preview-1--min.jpg', 'examples__slider-img--min')
+
+script(type="text/x-template")#examples-slider-controls
+  .examples__slider-controls
+    button(type="button").examples__slider-control.examples__slider-control--prev
+    button(type="button").examples__slider-control.examples__slider-control--next
+
+script(type="text/x-template")#examples-slider-tag
+  ul.examples__info-tags
+    li.examples__info-tag(v-for="")
+      p.examples__info-tag--name HTML
+
+script(type="text/x-template")#examples-slider-info
   .examples__info
-    ul.examples__info-tags
-      li.examples__info-tag 
-        p.examples__info-tag--name HTML
-      li.examples__info-tag 
-        p.examples__info-tag--name CSS
-      li.examples__info-tag 
-        .examples__info-tag--name Javascript
+    examples-slider-tag
     p.examples__info-name Сайт школы образования
     p.examples__info-text Этот парень проходил обучение веб&#8209разработке не&nbsp;где-то, а&nbsp;в&nbsp;LoftSchool! 2&nbsp;месяца только самых тяжелых испытаний и&nbsp;бессонных ночей!
     a(link="#", target="_blank").examples__info-link.link Посмотреть сайт
-
-
-script(type="text/x-template")#examples-slider-img
-  +image(.img, 'examples__slider-img')
-
-script(type="text/x-template")#examples-slider-img
-  +image('content/examples/preview-1--min.jpg', 'examples__slider-img--min')
-
-script(type="text/x-template")#examples-slider-img
-  p.examples__info-tag--name HTML

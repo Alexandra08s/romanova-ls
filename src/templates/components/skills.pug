@@ -4,7 +4,7 @@ script(type="text/x-template")#skills-block
       v-for="category in skills" 
       :key="category.id"
       :category="category"
-      )
+    )
   
 script(type="text/x-template")#skills-chart
   div
@@ -16,10 +16,15 @@ script(type="text/x-template")#skills-chart
             stop(offset='27%' stop-color='#4A00ED')
             stop(offset='70%' stop-color='#7C00EA')
       skills-progress(
-      v-for="skill in category.skills" 
-      :key="skill.id"
-      :skill="skill"
+        v-for="skill in category.skills" 
+        :key="skill.id"
+        :skill="skill"
       )
 
 script(type="text/x-template")#skills-progress
-  +skill-progress-bar('')
+  .skills__chart-progress
+    svg(viewBox="0 0 160 160", width="150", heigth="150", preserveAspectRatio="xMidYMid meet")
+      circle(cx="80", cy="80", r="70", ref="circle-progress" stroke="url(#linear)")
+      circle(cx="80", cy="80", r="70")
+    .skills__chart-tech
+      p.skills__chart-tech-text {{skill.title}}
