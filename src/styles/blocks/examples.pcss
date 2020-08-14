@@ -68,20 +68,8 @@
     width: 117.7%;
     margin-right: 0;
   }
-}
 
-.examples__slider-img-wrapper {
-  position: relative;
-  width: 100%;
-  height: 0;
-  padding-bottom: 62%;
-  overflow: hidden;
-
-  @include phones {
-    padding-bottom: 58%;
-  }
-
-  &:after {
+    &:after {
     content: attr(data-slide);
     position: absolute;
     top: 34.5%;
@@ -111,6 +99,22 @@
   }
 }
 
+.examples__slider-img-wrapper {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 62%;
+  overflow: hidden;
+
+  @include desktop {
+    padding-bottom: 56%;
+  }
+
+  @include phones {
+    padding-bottom: 58%;
+  }
+}
+
 .examples__slider-img {
   position: absolute;
   width: 100%;
@@ -137,10 +141,23 @@
 }
 
 .examples__slider-item {
+  overflow: hidden;
+  max-width: 178px;
+  max-height: 100px;
+
   @include desktop {
     max-width: 7.73rem;
     max-height: 4.33rem;
   }
+
+  @include tablets {
+    max-width: 8.31rem;
+    max-height: 4.67rem;
+  }
+}
+
+.examples__slider-btn {
+  padding: 0;
 }
 
 .examples__slider-img--min {

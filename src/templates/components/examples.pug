@@ -1,32 +1,55 @@
+script(type="text/x-template")#examples-container
+  .examples__wrapper
+    examples-slider(
+      :currentExample="currentExample"
+      :examples="examples"
+      @slide="slide"
+    )
+    examples-info(
+      :currentExample="currentExample"
+    )
+
 script(type="text/x-template")#examples-slider
-.examples__wrapper
-  .examples__slider
-    examples-slider-img
-  examples-slider-info
+  .examples__slider(:data-slide="currentExample.id")
+    .examples__slider-img-wrapper
+      img(:src="currentExample.img" class="examples__slider-img")
+    examples-img-min(
+      :currentExample="currentExample"
+      :examples="reversedExamples"
+    )
+    examples-controls(
+      @slide="$emit('slide', $event)"
+    )
 
-
-script(type="text/x-template")#examples-slider-img
-  .examples__slider-img-wrapper(data-slide="2")
-    +image(.img, 'examples__slider-img')
-
-script(type="text/x-template")#examples-slider-img-min
+script(type="text/x-template")#examples-img-min
   ul.examples__slider-list
-    li.examples__slider-item(v-for="" :key="")
-    +image('content/examples/preview-1--min.jpg', 'examples__slider-img--min')
+    li.examples__slider-item(
+        v-for="example in examples" 
+        :key="example.id"
+        :class="{active: currentExample.id == example.id}"
+      )
+      button.examples__slider-btn
+        img(:src="example.img").examples__slider-img--min
 
-script(type="text/x-template")#examples-slider-controls
+script(type="text/x-template")#examples-controls
   .examples__slider-controls
-    button(type="button").examples__slider-control.examples__slider-control--prev
-    button(type="button").examples__slider-control.examples__slider-control--next
+    button(type="button")(
+      @click="$emit('slide', 1)"
+    ).examples__slider-control.examples__slider-control--prev
+    button(type="button")(
+      @click="$emit('slide', -1)"
+    ).examples__slider-control.examples__slider-control--next
 
-script(type="text/x-template")#examples-slider-tag
-  ul.examples__info-tags
-    li.examples__info-tag(v-for="")
-      p.examples__info-tag--name HTML
-
-script(type="text/x-template")#examples-slider-info
+script(type="text/x-template")#examples-info
   .examples__info
-    examples-slider-tag
-    p.examples__info-name Сайт школы образования
-    p.examples__info-text Этот парень проходил обучение веб&#8209разработке не&nbsp;где-то, а&nbsp;в&nbsp;LoftSchool! 2&nbsp;месяца только самых тяжелых испытаний и&nbsp;бессонных ночей!
-    a(link="#", target="_blank").examples__info-link.link Посмотреть сайт
+    examples-tags(
+      :currentExample="currentExample"
+    )
+    p.examples__info-name {{currentExample.title}}
+    p.examples__info-text {{currentExample.descr}}
+    a(:href="currentExample.link", target="_blank").examples__info-link.link Посмотреть сайт
+
+script(type="text/x-template")#examples-tags
+  ul.examples__info-tags
+    li.examples__info-tag(v-for="tag in currentExample.skills")
+      p.examples__info-tag--name {{tag}}
