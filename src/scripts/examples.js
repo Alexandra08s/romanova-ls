@@ -73,7 +73,7 @@ new Vue({
   },
   data() {
     return {
-      examples: [],
+      examples: null,
       currentIndex: 0
     }
   },
