@@ -4,6 +4,7 @@ script(type="text/x-template")#examples-container
       :currentExample="currentExample"
       :examples="examples"
       @slide="slide"
+      @slide-to="slideTo"
     )
     examples-info(
       :currentExample="currentExample"
@@ -16,6 +17,7 @@ script(type="text/x-template")#examples-slider
     examples-img-min(
       :currentExample="currentExample"
       :examples="reversedExamples"
+      @slide-to="$emit('slide-to', $event)"
     )
     examples-controls(
       @slide="$emit('slide', $event)"
@@ -24,11 +26,13 @@ script(type="text/x-template")#examples-slider
 script(type="text/x-template")#examples-img-min
   ul.examples__slider-list
     li.examples__slider-item(
-        v-for="example in examples" 
+        v-for="(example, index) in examples" 
         :key="example.id"
         :class="{active: currentExample.id == example.id}"
       )
-      button.examples__slider-btn
+      button.examples__slider-btn(
+        @click="$emit('slide-to', example.sliderMinId)"
+      )
         img(:src="example.img").examples__slider-img--min
 
 script(type="text/x-template")#examples-controls

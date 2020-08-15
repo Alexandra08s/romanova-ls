@@ -27,12 +27,12 @@ new Vue({
     },
     slide(direction) {
       const slider = this.$refs.slider.$swiper
-      (direction == 1) ? slider.slideNext() : slider.slidePrev()
+      direction == 1 ? slider.slideNext() : slider.slidePrev()
     }
   },
   created() {
     const data = require('../data/reviews.json')
-    this.reviews = this.requireImages(data).slice(0, 2)
+    this.reviews = this.requireImages(data)
   },
   template: "#reviews-container"
 })

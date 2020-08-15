@@ -73,8 +73,7 @@ new Vue({
   },
   data() {
     return {
-      examples: null,
-      currentIndex: 0
+      examples: []
     }
   },
   computed: {
@@ -82,21 +81,7 @@ new Vue({
       return this.examples[0]
     }
   },
-  watch: {
-    currentIndex(val) {
-      this.makeInfiniteLoop(val)
-    }
-  },
   methods: {
-    makeInfiniteLoop(ind) {
-      const examplesLastInd = this.examples.length - 1
-      if (ind < 0) {
-        this.currentIndex = examplesLastInd
-      }
-      if (ind > examplesLastInd) {
-        this.currentIndex = 0
-      } 
-    },
     requireImages(data) {
       return data.map(item => {
         const requiredImage = require(`../images/content/examples/${item.img}`).default
@@ -105,21 +90,41 @@ new Vue({
         return item
       })
     },
-    slide(direction) {
-      const lastExample = this.examples[this.examples.length - 1]
-      if (direction == 1)  {
+    changeArrayOrderForward(num) {
+      for (let i = 0; i < num; i++) {
+        this.examples[0].sliderMinId = 0
         this.examples.push(this.examples[0])
         this.examples.shift()
+        this.setOrderMinId()
+      }
+    },
+    setOrderMinId() {
+      for (let i = 0; i < 3; i++) {
+        this.examples[i].sliderMinId = i + 1
+      }
+    },
+    slide(direction) {
+      if (direction === 1)  {
+        this.changeArrayOrderForward(1)
       } else {
+        const lastExample = this.examples[this.examples.length - 1]
+        this.examples.find(item => item.sliderMinId === 3).sliderMinId = 0
         this.examples.unshift(lastExample)
         this.examples.pop()
+        this.setOrderMinId()
       }
-      this.currentIndex = this.currentIndex + direction
     },
+    slideTo(minId) {
+      this.changeArrayOrderForward(minId - 1)
+    }
   },
   created() {
     const data = require('../data/examples.json')
-    this.examples = this.requireImages(data)
+    this.examples = this.requireImages(data).map(item => ({
+      ...item,
+      sliderMinId: 0
+    }))
+    this.setOrderMinId()
   },
   template: '#examples-container'
 })

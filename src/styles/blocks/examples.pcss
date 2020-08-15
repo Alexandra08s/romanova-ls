@@ -2,7 +2,7 @@
   padding-bottom: 126px;
 
   @include desktop {
-    padding-bottom: 6.27rem;
+    padding-bottom: 5%;
   }
 
   @include tablets {
@@ -11,6 +11,10 @@
 
   @include phones {
     padding-bottom: 6.71rem;
+  }
+
+  * { 
+    outline: 1px dashed rgba(red, 0.2);
   }
 }
 
@@ -33,9 +37,10 @@
 
 .examples__wrapper {
   display: flex;
+  align-items: flex-start;
+  transition: 1s;
 
   @include desktop {
-    align-items: flex-start;
   }
 
   @include tablets {
@@ -100,27 +105,15 @@
 }
 
 .examples__slider-img-wrapper {
-  position: relative;
   width: 100%;
-  height: 0;
-  padding-bottom: 62%;
   overflow: hidden;
-
-  @include desktop {
-    padding-bottom: 56%;
-  }
-
-  @include phones {
-    padding-bottom: 58%;
-  }
 }
 
 .examples__slider-img {
-  position: absolute;
-  width: 100%;
   height: auto;
   max-width: 100%;
   max-height: unset;
+  object-fit: cover;
 }
 
 .examples__slider-list {
@@ -265,10 +258,12 @@
   display: flex;
   margin-left: -4px;
   margin-right: -4px;
-  margin-bottom: 35px;
+  margin-bottom: 25px;
   font-weight: 600;
   font-size: 15px;
   line-height: 20px;
+  flex-wrap: wrap;
+  width: 100%;
 
   @include desktop {
     font-size: 1rem;
@@ -281,12 +276,18 @@
   @include tablets {
     font-size: 1.07rem;
     line-height: 1.43rem;
+    justify-content: center;
+  }
+
+  @include phones {
+    justify-content: flex-start;
   }
 }
 
 .examples__info-tag {
   padding-left: 4px;
   padding-right: 4px;
+  padding-bottom: 10px;
 
   @include desktop {
     padding-left: 1.5%;

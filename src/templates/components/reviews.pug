@@ -15,18 +15,15 @@ script(type="text/x-template")#reviews-container
       ref="slider"
       :options="sliderOptions"
       :reviews="reviews"
-    )
+    ).reviews__list
       swiper-slide(
         v-for="review in reviews" 
         :key="review.id"
-      )
-        p.reviews__text {{review.text}}
+      ).reviews__item
+        p.reviews__text {{ review.text }}
         .reviews__author-block
           .reviews__img-wrapper
             img(:src="review.img").reviews__img
           .reviews__author
-            p.reviews__author-name {{review.name}}
-            p.reviews__author-position  {{review.position}}
-
-script(type="text/x-template")#reviews-controls
-
+            p.reviews__author-name {{ review.name }}
+            p.reviews__author-position  {{ review.position }}
