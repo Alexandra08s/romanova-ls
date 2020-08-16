@@ -8,11 +8,6 @@
   @include desktop {
     padding-bottom: 13rem;
   }
-
-  @include tablets {
-      
-    
-  }
   
   @include phones {
     padding-bottom: 4.14rem;
@@ -30,6 +25,10 @@
     margin-bottom: 6.86rem;
   }
 
+  @include phones {
+    margin-bottom: 4.24rem;
+  }
+
   & .triangles__svg {
   transform: rotate(180deg)
   }
@@ -37,6 +36,7 @@
 
 .reviews__wrapper {
   display: flex;
+  align-items: flex-start;
   margin-bottom: 79px;
 
   @include desktop {
@@ -138,31 +138,38 @@
   }
 }
 
+.reviews__container {
+  max-width: 80%;
+
+  @include tablets {
+    max-width: 91%;
+  }
+}
+
 .reviews__list {
   display: flex;
+}
+
+.reviews .swiper-container {
+  margin-left: 0;
+  margin-right: 0;
 }
 
 .reviews__item {
   display: flex;
   flex-direction: column;
   min-height: 226px;
-  margin-right: 59px;
-  max-width: 30%;
   justify-content: space-between;
 
   @include desktop {
-    max-width: 40%;
     min-height: 15.07rem;
   }
 
   @include tablets {
-    max-width: 50%;
     min-height: 14.5rem;
-    margin-right: 3.2%;
   }
 
   @include phones {
-    max-width: 100%;
     margin-right: 0;
   }
 
@@ -182,18 +189,21 @@
   opacity: 0.6;
   padding-left: 98px;
   position: relative;
+  max-width: 75%;
 
   @include desktop {
     font-size: 1.07rem;
     line-height: 2rem;
     padding-left: 21.5%;
     opacity: 0.8;
+    max-width: 94%;
   }
 
   @include tablets {
     font-size: 1rem;
     line-height: 1.71rem;
     padding-left: 12.7%;
+    max-width: 100%;
   }
 
   @include phones {
@@ -215,7 +225,7 @@
     @include desktop {
       width: 5.13rem;
       height: 3.8rem;
-      transform: translate(-10%, 30%);
+      transform: translate(0%, 30%);
       z-index: -1;
     }
 
@@ -258,6 +268,11 @@
     margin-right: 8.5%;
     min-width: 5rem;
     min-height: 5rem;
+  }
+
+  @include tablets {
+    margin-right: 8%;
+    max-width: 2%;
   }
 }
 

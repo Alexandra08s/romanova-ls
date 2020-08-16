@@ -5,25 +5,26 @@ script(type="text/x-template")#reviews-container
       .reviews__controls
         button(
             type="button"
-            @click="slide(1)"
+            @click="slide(-1)"
         ).reviews__button.reviews__button-prev
         button(
             type="button"
-            @click="slide(-1)"
+            @click="slide(1)"
           ).reviews__button.reviews__button-next
-    swiper(
-      ref="slider"
-      :options="sliderOptions"
-      :reviews="reviews"
-    ).reviews__list
-      swiper-slide(
-        v-for="review in reviews" 
-        :key="review.id"
-      ).reviews__item
-        p.reviews__text {{ review.text }}
-        .reviews__author-block
-          .reviews__img-wrapper
-            img(:src="review.img").reviews__img
-          .reviews__author
-            p.reviews__author-name {{ review.name }}
-            p.reviews__author-position  {{ review.position }}
+    .reviews__container
+      swiper(
+        ref="slider"
+        :options="sliderOptions"
+        :reviews="reviews"
+      ).reviews__list
+        swiper-slide(
+          v-for="review in reviews" 
+          :key="review.id"
+        ).reviews__item
+          p.reviews__text {{ review.text }}
+          .reviews__author-block
+            .reviews__img-wrapper
+              img(:src="review.img").reviews__img
+            .reviews__author
+              p.reviews__author-name {{ review.name }}
+              p.reviews__author-position  {{ review.position }}

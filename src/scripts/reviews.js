@@ -8,7 +8,26 @@ new Vue({
     return {
       reviews: null,
       sliderOptions: {
-        slidesPerView: 2
+        loop: true,
+        slidesPerView: 2,
+        loopedSlides: 1,
+        breakpoints: {
+          320: {
+            slidesPerView: 1,
+            spaceBetween: 20
+          },
+          480: {
+            slidesPerView: 2,
+            spaceBetween: 55
+          },
+          768: {
+            slidesPerView: 2,
+            spaceBetween: 60
+          },
+          1200: {
+            spaceBetween: 0
+          }
+        }
       }
     }
   },
