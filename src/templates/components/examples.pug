@@ -4,7 +4,6 @@ script(type="text/x-template")#examples-container
       :currentExample="currentExample"
       :examples="examples"
       @slide="slide"
-      @slide-to="slideTo"
     )
     examples-info(
       :currentExample="currentExample"
@@ -16,8 +15,8 @@ script(type="text/x-template")#examples-slider
       img(:src="currentExample.img" class="examples__slider-img")
     examples-img-min(
       :currentExample="currentExample"
-      :examples="reversedExamples"
-      @slide-to="$emit('slide-to', $event)"
+      :examples="slicedExamples"
+      @slide="$emit('slide', $event)"
     )
     examples-controls(
       @slide="$emit('slide', $event)"
@@ -27,21 +26,22 @@ script(type="text/x-template")#examples-img-min
   ul.examples__slider-list
     li.examples__slider-item(
         v-for="(example, index) in examples" 
-        :key="example.id"
+        :key="index"
         :class="{active: currentExample.id == example.id}"
       )
       button.examples__slider-btn(
-        @click="$emit('slide-to', example.sliderMinId)"
+        @click.stop.prevent="$emit('slide', index)"
+        type="button"
       )
         img(:src="example.img").examples__slider-img--min
 
 script(type="text/x-template")#examples-controls
   .examples__slider-controls
-    button(type="button")(
-      @click="$emit('slide', 1)"
+    button(type="button"
+      @click="$emit('slide', 'prev')"
     ).examples__slider-control.examples__slider-control--prev
-    button(type="button")(
-      @click="$emit('slide', -1)"
+    button(type="button"
+      @click="$emit('slide', 'next')"
     ).examples__slider-control.examples__slider-control--next
 
 script(type="text/x-template")#examples-info

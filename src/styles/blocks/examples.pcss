@@ -51,7 +51,7 @@
 
 .examples__slider {
   position: relative;
-  margin-right: 156px;
+  margin-right: 153px;
   width: 66%;
   
   @include desktop {
@@ -80,6 +80,7 @@
     line-height: 48px;
     color: $color-mystic;
     z-index: -1;
+    transform: translate(1%, -10%);
 
     @include desktop {
       font-size: 20rem;
@@ -89,9 +90,10 @@
     }
 
     @include tablets {
-      font-size: 21.43rem;
+      font-size: 40vw;
       line-height: 29.21rem;
       top: 13.5%;
+      transform: translate(1%,6%);
     }
 
     @include phones {

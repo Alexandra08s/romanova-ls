@@ -6,11 +6,12 @@ new Vue({
   el: "#reviews-component",
   data() {
     return {
-      reviews: null,
+      reviews: [],
+      slider: null,
+      isDisabledNext: false,
+      isDisabledPrev: false,
       sliderOptions: {
-        loop: true,
         slidesPerView: 2,
-        loopedSlides: 1,
         breakpoints: {
           320: {
             slidesPerView: 1,
@@ -44,6 +45,20 @@ new Vue({
         return item
       })
     },
+    btnDisabledHandler() {
+      this.slider = this.$refs.slider.$swiper
+      if (this.slider.isBeginning === true) {
+        this.isDisabledPrev = true
+        this.isDisabledNext = false
+      } 
+      else if (this.slider.isEnd === true) {
+        this.isDisabledPrev = false
+        this.isDisabledNext = true
+      } else {
+        this.isDisabledPrev = false
+        this.isDisabledNext = false
+      }
+    },
     slide(direction) {
       const slider = this.$refs.slider.$swiper
       direction == 1 ? slider.slideNext() : slider.slidePrev()
@@ -52,6 +67,9 @@ new Vue({
   created() {
     const data = require('../data/reviews.json')
     this.reviews = this.requireImages(data)
+  },
+  mounted() {
+    this.btnDisabledHandler()
   },
   template: "#reviews-container"
 })

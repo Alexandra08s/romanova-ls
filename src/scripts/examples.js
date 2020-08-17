@@ -34,9 +34,10 @@ const examplesSlider = {
     examplesControls
   },
   computed: {
-    reversedExamples() {
-      const examples = [...this.examples]
-      return examples.slice(0, 3).reverse()
+    slicedExamples() {
+      const examples = [...this.examples].slice(1,4)
+      console.log(examples)
+      return examples
     }
   },
   template: "#examples-slider"
@@ -78,7 +79,7 @@ new Vue({
   },
   computed: {
     currentExample() {
-      return this.examples[0]
+      return this.examples[this.examples.length - 1]
     }
   },
   methods: {
@@ -92,39 +93,33 @@ new Vue({
     },
     changeArrayOrderForward(num) {
       for (let i = 0; i < num; i++) {
-        this.examples[0].sliderMinId = 0
         this.examples.push(this.examples[0])
         this.examples.shift()
-        this.setOrderMinId()
       }
     },
-    setOrderMinId() {
-      for (let i = 0; i < 3; i++) {
-        this.examples[i].sliderMinId = i + 1
+    changeArrayOrderBack(num) {
+      const lastExample = this.examples[this.examples.length - 1]
+      for (let i = 0; i < num; i++) {
+        this.examples.unshift(lastExample)
+        this.examples.pop()
       }
     },
     slide(direction) {
-      if (direction === 1)  {
+      if (direction === 'next' )  {
         this.changeArrayOrderForward(1)
+      } 
+      else if (direction === 'prev'|| direction === 1){
+        this.changeArrayOrderBack(1)
       } else {
-        const lastExample = this.examples[this.examples.length - 1]
-        this.examples.find(item => item.sliderMinId === 3).sliderMinId = 0
-        this.examples.unshift(lastExample)
-        this.examples.pop()
-        this.setOrderMinId()
-      }
-    },
-    slideTo(minId) {
-      this.changeArrayOrderForward(minId - 1)
+        if (direction === 0) {
+          this.changeArrayOrderForward(2)
+        }
+      } 
     }
   },
   created() {
     const data = require('../data/examples.json')
-    this.examples = this.requireImages(data).map(item => ({
-      ...item,
-      sliderMinId: 0
-    }))
-    this.setOrderMinId()
+    this.examples = this.requireImages(data).reverse()
   },
   template: '#examples-container'
 })

@@ -78,7 +78,6 @@
 
 .reviews__button {
   position: relative;
-  outline: none;
   padding: 24.5px;
   border: 2px solid $color-river-bed;
   border-radius: 50%;
@@ -135,6 +134,11 @@
     &:before {
       background-image: svg-load('arrow-up.svg', fill=$color-river-bed, width=100%, height=100%);
     }
+  }
+
+  &.disabled {
+    opacity: 0.3;
+    pointer-events: none;
   }
 }
 

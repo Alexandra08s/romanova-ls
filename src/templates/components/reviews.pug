@@ -6,16 +6,19 @@ script(type="text/x-template")#reviews-container
         button(
             type="button"
             @click="slide(-1)"
+            :class="{'disabled': isDisabledPrev}"
         ).reviews__button.reviews__button-prev
         button(
             type="button"
             @click="slide(1)"
+            :class="{'disabled': isDisabledNext}"
           ).reviews__button.reviews__button-next
     .reviews__container
       swiper(
         ref="slider"
         :options="sliderOptions"
         :reviews="reviews"
+        @slideChange="btnDisabledHandler"
       ).reviews__list
         swiper-slide(
           v-for="review in reviews" 
