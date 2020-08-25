@@ -59,4 +59,18 @@
       }
     }
   }
+
+  
+  &.interactive-btn {
+    &.is-cross {
+      &:after {
+        background: svg-load("cross.svg", fill=$color-outer-space) center center / contain no-repeat;
+      }
+    }
+  }
+
+  &.blocked {
+    opacity: 0.5;
+    pointer-events: none;
+  }
 }

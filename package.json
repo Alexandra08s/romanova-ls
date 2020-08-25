@@ -62,12 +62,18 @@
     "last 2 versions"
   ],
   "dependencies": {
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.7.0",
+    "eslint-plugin-vue": "^6.2.2",
     "normalize.css": "^8.0.1",
     "promptly": "^3.0.3",
     "pug": "^3.0.0",
     "request": "^2.88.0",
     "signale": "^1.4.0",
+    "storybook": "^6.0.12",
+    "swiper": "^6.1.1",
     "vue": "^2.6.7",
-    "vue-router": "^3.0.2"
+    "vue-awesome-swiper": "^4.1.1",
+    "vue-router": "^3.4.3"
   }
 }

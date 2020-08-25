@@ -3,4 +3,7 @@ if (process.env.NODE_ENV === "development") {
   require("file-loader!./index.pug");
 }
 
+import "./scripts/navigation";
 import "./scripts/skills";
+import "./scripts/examples";
+import "./scripts/reviews";

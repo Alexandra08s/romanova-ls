@@ -1,0 +1,14 @@
+.welcome {
+  background-image: url('../images/background.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+
+  @include tablets {
+    background-position-x: 54%;
+  }
+
+  @include phones {
+    background-position-x: 69%;
+  }
+}

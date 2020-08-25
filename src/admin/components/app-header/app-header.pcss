@@ -1,0 +1,44 @@
+@import "../../../styles/mixins.pcss";
+
+.a-header {
+  background-color: $color-fiord-header;
+  padding: 16px 0;
+
+  @include tablets {
+    padding: 1.14rem 0;
+  }
+}
+
+.a-header__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  @include phones {
+    width: 88.5%;
+    position: relative;
+  }
+}
+
+.a-header__wrapper {
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+
+.a-header__title {
+  font-size: 14px;
+  line-height: 19px;
+  opacity: 0.5;
+  color: $color-white;
+  margin-left: 5.4%;
+
+  @include tablets {
+    font-size: 1rem;
+    line-height: 1.36rem;
+  }
+
+  @include phones {
+    display: none;
+  }
+}

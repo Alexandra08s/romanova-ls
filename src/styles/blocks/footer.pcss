@@ -1,0 +1,395 @@
+footer {
+    padding-top: 62px;
+    padding-bottom: 74px;
+    background-color: $color-shark;
+
+     @include phones {
+      padding-bottom: 6.21rem;
+      padding-top: 3.79rem;
+    }
+}
+
+.footer__container {
+    display: flex;
+    justify-content: space-between;
+
+    @include tablets {
+      flex-wrap: wrap;
+      justify-content: unset;
+    }
+
+    @include phones {
+      flex-direction: column;
+    }
+}
+
+.footer__wrapper {
+    display: flex;
+    width: 33%;
+
+    @include desktop {
+      flex-direction: column;
+      width: 26%;
+      margin-right: 2%;
+    }
+
+    @include tablets {
+      margin-right: 1%;
+      width: 33%;
+      margin-bottom: 6.5%;
+    }
+
+    @include phones {
+      width: 100%;
+    }
+}
+
+.footer__copyright {
+    font-weight: 600;
+    font-size: 48px;
+    line-height: 65px;
+    margin-right: 15.5%;
+
+    @include desktop {
+      margin-bottom: 24px;
+      margin-right: 0;
+    }
+
+    @include tablets {
+      line-height: 0.7;
+      margin-bottom: 1.29rem;
+    }
+
+    @include phones {
+      line-height: 0.7;
+      margin-bottom: 1.86rem;
+    }
+}
+
+.footer__info {
+    width: 24%;
+
+    @include desktop {
+      width: 38%
+    }
+
+    @include phones {
+      width: 100%
+    }
+}
+
+.footer__author {
+    text-transform: uppercase;
+    color: $color-white;
+    font-size: 18px;
+    line-height: 30px;
+    font-weight: bold;
+    margin-bottom: 16px;
+
+    @include desktop {
+      margin-bottom: 1.29rem;
+    }
+
+    @include phones {
+      line-height: 1.79rem;
+      margin-bottom: 0.64rem;
+    }
+}
+
+.footer__descr {
+    line-height: 30px;
+
+    @include tablets {
+      line-height: 24px;
+    }
+
+    @include phones {
+      line-height: 1.36rem;
+      margin-bottom: 3.14rem;
+    }
+}
+
+.footer__block {
+    width: 33%;
+
+    @include desktop {
+      width: 36%;
+    }
+
+    @include tablets {
+      width: 53%;
+    }
+
+    @include phones {
+      width: 100%;
+    }
+}
+
+.footer__nav-list {
+    display: flex;
+    margin-right: -31px;
+    margin-left: -31px;
+    margin-bottom: 47px;
+
+    @include desktop {
+      margin-bottom: 48px;
+    }
+
+    @include tablets {
+      margin-right: 0;
+      margin-left: 0;
+      margin-bottom: 38px;
+      justify-content: space-between;
+    }
+
+    @include phones {
+      margin-bottom: 1.93rem;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+}
+
+.footer__nav-item {
+    color: $color-white;
+    line-height: 22px;
+    padding-right: 31px;
+    padding-left: 31px;
+    border-bottom: 3px solid transparent;
+
+    @include tablets {
+      line-height: 19px;
+      padding-right: 0;
+      padding-left: 0;
+      font-size: 1rem;
+    }
+
+    @include phones {
+      width: 50%;
+      padding-bottom: 1.57rem;
+    }
+
+    &--active {
+      color: $color-electric-violet;
+    }
+
+    &:hover {
+      text-shadow: 0 0 0.72px $color-white, 0 0 0.72px $color-white;
+    }
+
+    &:focus {
+      text-shadow: 0 0 0.72px $color-white, 0 0 0.72px $color-white;
+    }
+
+    &:active {
+      text-shadow: 0 0 0.72px $color-white, 0 0 0.72px $color-white;
+    }
+}
+
+.footer__block-text {
+    color: $color-white;
+    opacity: 0.45;  
+    margin-bottom: 40px;
+    max-width: 69%;
+    line-height: 30px;
+
+    @include desktop {
+      margin-bottom: 30px;
+      max-width: 82%;
+    }
+
+    @include tablets {
+      margin-bottom: 1.5rem;
+      max-width: 100%;
+      line-height: 1.71rem;
+    }
+
+    @include phones {
+      margin-bottom: 1.57rem;
+    }
+}
+
+.footer__social-list {
+    display: flex;
+    justify-content: space-between;
+    max-width: 55%;
+    align-items: center;
+
+    @include desktop {
+      max-width: 70.5%;
+    }
+
+    @include phones {
+      max-width: 100%;
+      margin-bottom: 2.21rem;
+    }
+}
+
+.footer__social-link {
+    border: 1px solid $color-white;
+    opacity: 0.3;
+    border-radius: 50%;
+    display: block;
+
+    &--inst {
+      padding: 13.5px;
+
+      @include tablets {
+        padding: 0.97rem;
+      }
+    }
+
+    &--github {
+        padding: 12px;
+
+        @include tablets {
+        padding: 0.87rem;
+      }
+    }
+
+    &--vk {
+        padding: 10px;
+
+        @include tablets {
+        padding: 0.72rem;
+      }
+    }
+
+    &--email {
+        padding: 13px;
+
+        @include tablets {
+        padding: 0.92rem;
+      }
+    }
+
+    &:hover {
+        border: 1px solid $color-electric-violet;
+        opacity: 1;
+    }
+
+    &:focus {
+        border: 1px solid $color-electric-violet;
+        opacity: 1;
+    }
+
+    &:active {
+        border: 1px solid $color-electric-violet;
+        opacity: 1;
+    }
+}
+
+.footer__social-link:hover > .footer__social-img {
+    fill: $color-electric-violet;
+    opacity: 1;
+}
+
+.footer__social-link:focus > .footer__social-img {
+    fill: $color-electric-violet;
+    opacity: 1;
+}
+
+.footer__social-link:active > .footer__social-img {
+    fill: $color-electric-violet;
+    opacity: 1;
+}
+
+.footer__social-img {
+    fill: $color-white;
+    opacity: 0.3;
+    display: block;
+
+    &--inst {
+      width: 21px;
+      height: 21px;
+
+      @include tablets {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+  }
+
+    &--vk {
+      width: 28px;
+      height: 28px;
+
+      @include tablets {
+        width: 2rem;
+        height: 2rem;
+      }
+    }
+
+    &--github {
+      width: 24px;
+      height: 24px;
+
+      @include tablets {
+        width: 1.7rem;
+        height: 1.7rem;
+      }
+    }
+
+    &--email {
+      width: 22px;
+      height: 22px;
+
+      @include tablets {
+        width: 1.6rem;
+        height: 1.6rem;
+      }
+    }
+}
+
+.footer__quote {
+    width: 33%;
+    padding-top: 70px;
+
+    @include desktop {
+      width: 47%;
+    }
+
+    @include tablets {
+      padding-top: 0;
+      width: 65%;
+      margin-left: 34%;
+    }
+
+    @include phones {
+      width: 100%;
+      margin-left: 0;
+    }
+}
+
+.footer__quote-expr {
+    line-height: 30px;
+    margin-bottom: 31px;
+    color: $color-white;
+    opacity: 0.45;
+    width: 96%;
+
+    @include desktop {
+      margin-bottom: 27px;
+    }
+
+    @include tablets {
+      line-height: 1.71rem;
+      margin-bottom: 1.14rem;
+    }
+
+    @include phones {
+      margin-bottom: 2.14rem;
+    }
+}
+
+.footer__quote-author {
+    font-style: italic;
+    color: $color-white;
+    line-height: 22px;
+
+    @include desktop {
+      line-height: 30px;
+    }
+
+    @include tablets {
+      line-height: 1.36rem;
+    }
+}

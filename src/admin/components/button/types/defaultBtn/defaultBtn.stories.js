@@ -1,63 +1,73 @@
-import appButton from "../../button.vue";
-import { action } from "@storybook/addon-actions";
+import appButton from '../../button.vue'
+import {
+  action
+} from '@storybook/addon-actions'
 
 const methods = {
-  onClick: action("onClick"),
-  onChange: action("onChange")
+  onClick: action('onClick'),
+  onChange: action('onChange')
 }
 
 export default {
-  title: "button/default",
-  components: { appButton },
-};
+  title: 'button/default',
+  components: {
+    appButton
+  },
+}
 
 export const defaultView = () => ({
-  components: { appButton },
+  components: {
+    appButton
+  },
   template: `
     <appButton title="Send!" @click="onClick" />
   `,
   methods
-});
+})
 
 defaultView.story = {
-  name: "Стандартный вид",
-};
+  name: 'Стандартный вид',
+}
 
 
 export const plainView = () => ({
-  components: { appButton },
+  components: {
+    appButton
+  },
   template: `
     <appButton plain @click="onClick" />
   `,
   methods
-});
+})
 
 plainView.story = {
-  name: "Без фона",
-};
+  name: 'Без фона',
+}
 
 export const disabledView = () => ({
-  components: { appButton },
+  components: {
+    appButton
+  },
   template: `
     <appButton disabled />
   `,
-});
+})
 
 disabledView.story = {
-  name: "Заблокированный",
-};
+  name: 'Заблокированный',
+}
 
 
 export const fileView = () => ({
-  components: { appButton },
+  components: {
+    appButton
+  },
   template: `
     <appButton typeAttr="file" @change="onChange" />
   `,
   methods
-});
+})
 
 fileView.story = {
-  name: "Тип - файл",
-};
-
-
+  name: 'Тип - файл',
+}

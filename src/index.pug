@@ -10,6 +10,9 @@ html(lang="en")
   body
     .wrapper
       .maincontent
-        +image('content/user.jpg', 'user-pic')
-        +icon('link', 'link-class')
-        .icon-bg
+        include ./blocks/welcome.pug
+        include ./blocks/skills.pug
+        include ./blocks/examples.pug
+        include ./blocks/reviews.pug
+        include ./blocks/footer.pug 
+    include ./templates/app.pug

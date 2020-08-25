@@ -10,7 +10,7 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 module.exports = (env, argv) => {
   const isProductionBuild = argv.mode === "production";
-  const publicPath = "/";
+  const publicPath = "/romanova-ls/";
 
   const pcss = {
     test: /\.(p|post|)css$/,
@@ -111,6 +111,7 @@ module.exports = (env, argv) => {
       historyApiFallback: true,
       noInfo: false,
       overlay: true,
+      // host: '192.168.1.101'
     },
     performance: {
       hints: false,

@@ -1,21 +1,21 @@
-import editLine from "./editLine.vue";
-import { action } from "@storybook/addon-actions";
+import editLine from './editLine.vue'
+import { action } from '@storybook/addon-actions'
 
 const methods = {
-  onApprove: action("onApprove"),
-  onRemove: action("onRemove")
+  editCategoryName: action('editCategoryName'),
+  removeSkill: action('removeSkill')
 }
 
 export default {
-  title: "editLine",
+  title: 'editLine',
   component: editLine,
-};
+}
 
 export const defaultView = () => ({
   components: { editLine },
   data() {
     return {
-      title: "Название"
+      title: 'Название'
     }
   },
   template: `
@@ -26,19 +26,38 @@ export const defaultView = () => ({
     />
   `,
   methods
-});
+})
 
 defaultView.story = {
-  name: "Стандартный вид",
-};
+  name: 'Стандартный вид',
+}
 
 export const blockedView = () => ({
   components: { editLine },
+  props: {
+    empty: {
+      type: Boolean
+    }
+  },
+  data() {
+    return {
+      currentCategory: {
+        id: 0,
+        name: 'Frontend',
+        skills: []
+      }
+    }
+  },
   template: `
-    <editLine value="Название" blocked />
+    <editLine 
+    @edit-category-name="editCategoryName"
+    @remove="removeSkill"
+    :default-edit-mode="empty"
+    v-model="currentCategory.name"
+    />
   `,
-});
+})
 
 blockedView.story = {
-  name: "Заблокированный",
-};
+  name: 'Заблокированный',
+}

@@ -1,68 +1,91 @@
 <template>
   <div class="edit-line-component" :class="{'blocked' : blocked}">
-    <div class="title" v-if="editmode === false">
-      <div class="text">{{value}}</div>
+    <div v-if="editmode === false" class="title">
+      <div class="text">
+        {{ value }}
+      </div>
       <div class="icon">
-        <icon symbol="pencil" grayscale @click="editmode = true"></icon>
+        <icon
+          symbol="pencil"
+          grayscale
+          @click="editmode = true"
+        ></icon>
       </div>
     </div>
-    <div v-else class="title">
+    <form
+      v-else
+      class="title"
+      @submit.prevent
+    >
       <div class="input">
         <app-input
+          v-model="title"
           placeholder="Название новой группы"
           :value="value"
-          :errorText="errorText"
-          @input="$emit('input', $event)"
-          @keydown.native.enter="onApprove"
+          :error-message="errorMessage"
           autofocus="autofocus"
           no-side-paddings="no-side-paddings"
+          @input="$emit('input', $event)"
+          @keydown.native.enter="onApprove"
         ></app-input>
       </div>
       <div class="buttons">
         <div class="button-icon">
-          <icon symbol="tick" @click="onApprove"></icon>
+          <icon symbol="tick" @click="editCategoryName"></icon>
         </div>
         <div class="button-icon">
-          <icon symbol="cross" @click="$emit('remove')"></icon>
+          <icon
+            symbol="cross"
+            :blocked="!!errorMessage"
+            @click="editmode = false"
+          ></icon>
         </div>
       </div>
-    </div>
+    </form>
   </div>
 </template>
 
 <script>
 export default {
+  components: {
+    icon: () => import('components/icon'),
+    appInput: () => import('components/input')
+  },
   props: {
     value: {
       type: String,
-      default: ""
+      default: ''
     },
-    errorText: {
-      type: String,
-      default: ""
-    },
-    blocked: Boolean
+    blocked: Boolean,
+    defaultEditMode: {
+      type: Boolean,
+      default: false
+    }
   },
   data() {
     return {
-      editmode: false,
-      title: this.value
-    };
-  },
-  methods: {
-    onApprove() {
-      if (this.title.trim() === this.value.trim()) {
-        this.editmode = false;
-      } else {
-        this.$emit("approve", this.value);
-      }
+      editmode: this.defaultEditMode,
+      title: this.value,
+      errorMessage: ''
     }
   },
-  components: {
-    icon: () => import("components/icon"),
-    appInput: () => import("components/input")
+  methods: {
+    editCategoryName() {
+      if (this.title.trim() !== this.value.trim()) {
+        this.editmode = false
+      } else {
+        if (this.title.trim() === '') {
+          console.log(this.errorMessage)
+          this.errorMessage = 'Не заполнено название группы'
+          console.log(this.errorMessage)
+        } else {
+          this.$emit('edit-category-name', this.value)
+          this.editmode = false
+        }
+      }
+    }
   }
-};
+}
 </script>
 
 <style lang="postcss" scoped src="./editLine.pcss"></style>

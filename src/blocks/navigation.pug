@@ -1,0 +1,10 @@
+.nav
+  label(aria-label="Меню").nav__label
+    input.nav__check.visually-hidden(type='checkbox' name="nav-check")
+    .nav__btn
+    .container.nav__container
+      .nav__block
+        p.nav__logo ВА
+      .nav__menu
+        +nav-list('nav__menu-list', 'nav__menu-item')
+        +social-list('nav__social-list', 'nav__social-item', 'nav__social-img', false)

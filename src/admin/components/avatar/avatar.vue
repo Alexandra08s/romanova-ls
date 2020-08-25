@@ -1,29 +1,21 @@
 <template>
-  <div class="avatar-component" :style="measures">
-    <img 
-      class="image"
-      v-bind="$attrs"
-      alt="user picture"
-    />
-  </div>
+  <component 
+    :is="type"
+    v-bind="$attrs"
+  />
 </template>
+
 <script>
 export default {
-  props: {
-    size: {
-      type: String,
-      default: "3"
-    }
+  components: {
+    default: () => import('./types/defaultAvatar'),
+    labeled: () => import('./types/labeledAvatar')
   },
-  computed: {
-    measures() {
-      const size = Number(this.size);
-      return {
-        width: `${size}rem`,
-        height: `${size}rem`,
-      }
+  props: {
+    type: {
+      type: String,
+      default: 'default'
     }
   }
 }
 </script>
-<style lang="postcss" scoped src="./avatar.pcss"></style>
