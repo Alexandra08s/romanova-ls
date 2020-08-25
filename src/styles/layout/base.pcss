@@ -1,4 +1,6 @@
 html {
+  font-size: 16px;
+
   @include desktop {
     font-size: 15px;
   }
@@ -51,8 +53,9 @@ body {
 }
 
 button {
-  border: 0;
+  border: none;
   cursor: pointer;
+  background-color: transparent;
 }
 
 * {
@@ -115,7 +118,22 @@ img {
     font-size: 1.71rem;
     line-height: 2.36rem;
   }
+}
 
+.page__title {
+  font-weight: bold;
+  font-size: 1.31rem;
+  line-height: 1.81rem;
+
+  @include tablets {
+    font-size: 1.5rem;
+    line-height: 2.07rem;
+  }
+
+  @include phones {
+    font-size: 1.29rem;
+    line-height: 1.79rem;
+  }
 }
 
 .link {

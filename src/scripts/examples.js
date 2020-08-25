@@ -1,4 +1,4 @@
-import Vue from "vue"
+import Vue from 'vue'
 
 const examplesImgMin = {
   props: {
@@ -11,11 +11,11 @@ const examplesImgMin = {
       required: true
     }
   },
-  template: "#examples-img-min"
+  template: '#examples-img-min'
 }
 
 const examplesControls = {
-  template: "#examples-controls"
+  template: '#examples-controls'
 }
 
 const examplesSlider = {
@@ -35,12 +35,11 @@ const examplesSlider = {
   },
   computed: {
     slicedExamples() {
-      const examples = [...this.examples].slice(1,4)
-      console.log(examples)
+      const examples = [...this.examples].slice(1, 4)
       return examples
     }
   },
-  template: "#examples-slider"
+  template: '#examples-slider'
 }
 
 const examplesTags = {
@@ -50,7 +49,7 @@ const examplesTags = {
       required: true
     }
   },
-  template: "#examples-tags"
+  template: '#examples-tags'
 }
 
 const examplesInfo = {
@@ -63,7 +62,7 @@ const examplesInfo = {
   components: {
     examplesTags
   },
-  template: "#examples-info"
+  template: '#examples-info'
 }
 
 new Vue({
@@ -81,6 +80,10 @@ new Vue({
     currentExample() {
       return this.examples[this.examples.length - 1]
     }
+  },
+  created() {
+    const data = require('../data/examples.json')
+    this.examples = this.requireImages(data).reverse()
   },
   methods: {
     requireImages(data) {
@@ -105,21 +108,16 @@ new Vue({
       }
     },
     slide(direction) {
-      if (direction === 'next' )  {
+      if (direction === 'next') {
         this.changeArrayOrderForward(1)
-      } 
-      else if (direction === 'prev'|| direction === 1){
+      } else if (direction === 'prev' || direction === 1) {
         this.changeArrayOrderBack(1)
       } else {
         if (direction === 0) {
           this.changeArrayOrderForward(2)
         }
-      } 
+      }
     }
-  },
-  created() {
-    const data = require('../data/examples.json')
-    this.examples = this.requireImages(data).reverse()
   },
   template: '#examples-container'
 })

@@ -2,7 +2,7 @@
   display: none;
   position: absolute;
   top: 100%;
-  left: 30%;
+  left: 50%;
   transform: translateX(-50%);
   z-index: 100;
 }
@@ -10,6 +10,8 @@
 .input {
   display: block;
   position: relative;
+  font-size: 18px;
+  line-height: 25px;
 
   &.no-side-paddings {
     .input__elem {
@@ -52,7 +54,7 @@
     @each $icon in (user, key) {
       &.input_icon-$(icon) {
         .input__elem {
-          background-image: svg-load("$(icon).svg", fill=$errors-color);
+          background-image: svg-load("$(icon).svg", fill=$color-thunderbird);
         }
       }
     }
@@ -61,7 +63,7 @@
 
 .error {
   .field__elem {
-    border-color: $errors-color;
+    border-color: $color-thunderbird;
   }
 
   .input__error-tooltip {
@@ -82,7 +84,7 @@
 .textarea__elem {
   height: 150px;
   padding: 20px;
-  border: 1px solid rgba($text-color, 0.2);
+  border: 1px solid rgba($color-fiord, 0.2);
   resize: none;
   font-weight: 600;
   margin-top: 10px;

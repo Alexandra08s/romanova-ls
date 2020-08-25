@@ -1,0 +1,42 @@
+  .skill__wrapper {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  .skill__title {
+    margin-right: auto;
+  }
+
+  .skill__percent {
+    padding-right: 60px;
+  }
+
+  .skill__percent-value {
+    position: relative;
+    padding-right: 29px;
+
+    &:after {
+      content: "%";
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      opacity: 0.5;    
+    }
+
+    &--edit {
+      padding-right: 0;
+
+      &:after {
+        transform: translate(0%, -50%);
+      }
+    }
+  }
+
+  .skill__btn {
+    margin-bottom: 25%;
+  }
+
+.skill__percent-value /deep/ .input__elem {
+  text-align: center;
+}

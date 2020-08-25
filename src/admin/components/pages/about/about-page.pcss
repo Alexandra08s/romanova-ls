@@ -1,0 +1,75 @@
+@import "../../../../styles/mixins.pcss";
+
+.about {
+  background-image: url('../../../../images/background-admin.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.about__wrapper {
+  display: flex;
+  padding-top: 53px;
+  padding-bottom: 56px;
+
+  @include tablets {
+    padding-top: 2.89rem;
+    padding-bottom: 2.96rem;
+  }
+
+  @include phones {
+    padding-top: 2.14rem;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.about__title {
+  margin-right: 54px;
+
+  @include tablets {
+    padding-right: 1.6rem;
+    font-size: 1.5rem;
+    line-height: 2.07rem;
+    margin-right: 4rem;
+  }
+
+  @include phones {
+    margin-bottom: 1.71rem;
+    font-size: 1.29rem;
+    line-height: 1.79rem;
+  }
+}
+
+.about__list {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -24px;
+
+  @include tablets {
+    margin-right: -2rem;
+  }
+
+  @include phones {
+    margin-right: 0;
+  }
+}
+
+.about__item {
+  width: 50%;
+  padding-right: 24px;
+  margin-bottom: 25px;
+
+  @include tablets {
+    padding-right: 2rem;
+    margin-bottom: 1.79rem;
+  }
+  
+  @include phones {
+    padding-right: 0;
+    margin-bottom: 2.57rem;
+  }
+
+  @media screen and (max-width: 590px) {
+    width: 100%;
+  }
+}

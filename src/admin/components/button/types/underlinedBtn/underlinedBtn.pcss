@@ -1,0 +1,21 @@
+@import "../../../../../styles/mixins.pcss";
+
+.btn-underlined {
+  color: $color-white;
+  opacity: 0.9;
+  text-decoration: underline;
+  font-family: inherit;
+  font-size: inherit;
+
+  @include phones {
+    position: fixed;
+    top: 3.21rem;
+    left: calc(7% + 3.79rem);
+  }
+
+  &.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+    user-select: none;
+  }
+}

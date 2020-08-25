@@ -1,11 +1,11 @@
 <template>
-  <div class="card-component card_plain" v-if="simple">
+  <div v-if="simple" class="card-component card_plain">
     <slot name="default"></slot>
   </div>
-  <div class="card-component" v-else>
+  <div v-else class="card-component">
     <div class="header">
       <div class="text" v-text="title"></div>
-      <slot name="title" v-if="!!title === false"></slot>
+      <slot v-if="!!title === false" name="title"></slot>
     </div>
     <div class="content">
       <slot name="content"></slot>
@@ -18,11 +18,11 @@ export default {
   props: {
     title: {
       type: String,
-      default: "" 
+      default: '' 
     },
     simple: Boolean
   }
-};
+}
 </script>
 
 
