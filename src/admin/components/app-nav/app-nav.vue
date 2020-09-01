@@ -8,8 +8,7 @@
           class="nav__item"
         >
           <router-link 
-            class="nav__link"
-            active-class="active" 
+            :class="['nav__link', {'active': $route.name === item.link}]"
             :to="{name: item.link}" 
           >
             {{ item.name }}

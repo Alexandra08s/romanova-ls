@@ -1,50 +1,43 @@
 <template>
   <div>
-    <app-header title="Панель администрирования">
-      <labeled-avatar :user-name="userName" :src="imgSrc" />
-    </app-header>
-    <app-nav :nav-list="navList" />
+    <router-view name="header" />
     <div class="app__content">
       <router-view />
+    </div>
+    <div :class="['notification__container', {'active': isTooltipShown}]">
+      <notification
+        class="notification"
+        :text="tooltipText"
+        :type="tooltipType"
+        @click="hideTooltip"
+      />
     </div>
   </div>
 </template>
 
 <script>
-import appHeader from './components/app-header/app-header.vue'
-import labeledAvatar from './components/avatar/types/labeledAvatar/labeledAvatar.vue'
-import appNav from './components/app-nav/app-nav.vue'
+import notification from './components/notification/notification.vue'
+import { mapState, mapActions } from 'vuex'
 
 export default {
   name: 'App',
   components: {
-    appHeader,
-    labeledAvatar,
-    appNav
-  },
-  data() {
-    return {
-      userName: 'Владимир Астаханов',
-      navList: [
-        { name: 'Обо мне', link: 'about' },
-        { name: 'Работы', link: 'examples' },
-        { name: 'Отзывы', link: 'reviews' }
-      ]
-    }
+    notification
   },
   computed: {
-    imgSrc() {
-      return require('../images/content/avatar.jpg').default
-    }
+    ...mapState('tooltip', {
+      isTooltipShown: state => state.isShown,
+      tooltipText: state => state.text,
+      tooltipType: state => state.type
+    })
+  },
+  methods: {
+    ...mapActions({
+      hideTooltip: 'tooltip/hide'
+    })
   }
 }
 </script>
 
 <style lang="pcss" src="./app.pcss">
-</style>
-
-<style lang="pcss" scoped>
-  .app__content {
-    margin-top: 4px;
-  }
 </style>

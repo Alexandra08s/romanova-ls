@@ -1,28 +1,35 @@
 <template>
-  <form
-    v-if="editMode"
+  <validation-observer
+    v-if="currentSkill.editMode"
+    ref="skill-item"
     class="skill__wrapper"
-    @submit.prevent
+    tag="div"
   >
     <div class="skill__title">
-      <app-input
-        v-model.trim="currentSkill.title"
-        no-side-paddings
-        :error-message="errorTitleMessage"
-      />
+      <ValidationProvider v-slot="{ errors }" rules="required">
+        <app-input
+          v-model.trim="currentSkill.title"
+          no-side-paddings
+          :error-message="errors[0] ? 'Не введен навык' : ''"
+          data-vv-validate-on="change"
+        />
+      </ValidationProvider>
     </div>
     <p class="skill__percent">
-      <app-input
-        v-model="currentSkill.percent"
-        type="number"
-        min="0"
-        max="100"
-        maxlength="3"
-        no-side-paddings
-        :error-message="errorPercentMessage"
-        class="skill__percent-value"
-        :class="{'skill__percent-value--edit': editMode}"
-      />
+      <ValidationProvider v-slot="{ errors }" rules="required">
+        <app-input
+          v-model="currentSkill.percent"
+          type="number"
+          min="0"
+          max="100"
+          maxlength="3"
+          no-side-paddings
+          :error-message="errors[0]"
+          data-vv-validate-on="change"
+          class="skill__percent-value"
+          :class="{'skill__percent-value--edit': currentSkill.editMode}"
+        />
+      </ValidationProvider>
     </p>
     <div class="skill__btns">
       <icon
@@ -34,10 +41,10 @@
         symbol="cross"
         class="skill__btn"
         :blocked="blocked"
-        @click="editMode = false"
+        @click="currentSkill.editMode = false"
       />
     </div>
-  </form>
+  </validation-observer>
   <div v-else class="skill__wrapper">
     <div class="skill__title">
       {{ skill.title }}
@@ -52,13 +59,13 @@
         symbol="pencil"
         class="skill__btn"
         grayscale
-        @click="editMode = true"
+        @click="currentCheck"
       />
       <icon
         symbol="trash"
         class="skill__btn"
         grayscale
-        @click="$emit('remove-skill', skill.id)"
+        @click="$emit('remove-skill', currentSkill)"
       />
     </div>
   </div>
@@ -67,11 +74,30 @@
 <script>
 import appInput from '../input/input.vue'
 import icon from '../icon/icon.vue'
+import { ValidationProvider, ValidationObserver, extend } from 'vee-validate'
+import { required, between, integer } from 'vee-validate/dist/rules'
+import { setInteractionMode } from 'vee-validate'
+
+setInteractionMode('passive')
+extend('required', {
+  ...required,
+  message: 'Не введен процент'
+})
+extend('integer', {
+  ...integer,
+  message: 'Введите число'
+})
+extend('between', {
+  ...between,
+  message: 'Введите корректное значение'
+})
 
 export default {
   components: {
     appInput,
-    icon
+    icon,
+    ValidationProvider,
+    ValidationObserver
   },
   props: {
     skill: {
@@ -81,10 +107,13 @@ export default {
   },
   data() {
     return {
-      editMode: false,
-      currentSkill: this.skill,
-      errorPercentMessage: '',
-      errorTitleMessage: '',
+      currentSkill: {
+        id: this.skill.id,
+        title: this.skill.title,
+        percent: this.skill.percent,
+        category: this.skill.category,
+        editMode: false,
+      },
       blocked: false
     }
   },
@@ -97,32 +126,19 @@ export default {
     }
   },
   methods: {
-    editSkill() {
-      this.errorTitleMessage = ''
-      this.errorPercentMessage = ''
-      this.blocked = false
-      if (this.currentSkill.title === null) {
-        this.errorTitleMessage = 'Не введен навык'
-        this.blocked = true
-      } 
-      else if (this.currentSkill.title.trim() === '') {
-        this.errorTitleMessage = 'Не введен навык'
-        this.blocked = true
-      }
-
-      if (this.currentSkill.percent === null) {
-        this.errorPercentMessage = 'Не введен процент'
-        this.blocked = true
-      }
-      else if (this.currentSkill.percent.trim() === '') {
-        this.errorPercentMessage = 'Не введен процент'
-        this.blocked = true
-      }
-
-      if (this.errorTitleMessage == '' && this.errorPercentMessage == '') {
-        this.editMode = false
-        this.$emit('edit-skill', this.currentSkill)
-      }
+    async editSkill() {
+      await this.$refs['skill-item'].validate().then(isValid => {
+        if (isValid) {
+          this.currentSkill.editMode = false
+          this.$emit('edit-skill', this.currentSkill)
+        } else {
+          this.blocked = true
+        }
+      })
+    },
+    currentCheck() {
+      this.currentSkill.editMode = true
+      console.log(this.currentSkill.editMode)
     }
   }
 }

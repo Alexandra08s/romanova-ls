@@ -1,32 +1,59 @@
 <template>
-  <form :class="['skill-add-line__wrapper', {'disabled': disabled}]" @submit.prevent>
-    <app-input
-      v-model="newSkill.title"
-      placeholder="Новый навык"
-      class="skill-add-line__name"
-      :error-message="errorTitleMessage"
-    />
-    <app-input
-      v-model="newSkill.percent"
-      class="skill-add-line__percent"
-      :error-message="errorPercentMessage"
-      placeholder="100 %"
-    />
+  <validation-observer
+    ref="skill-add"
+    :class="['skill-add-line__wrapper', {'disabled': disabled}]"
+    tag="div"
+  >
+    <ValidationProvider v-slot="{ errors }" rules="required">
+      <app-input
+        v-model="newSkill.title"
+        placeholder="Новый навык"
+        class="skill-add-line__name"
+        :error-message="errors[0] ? 'Не введен навык' : ''"
+      />
+    </ValidationProvider>
+    <ValidationProvider v-slot="{ errors }" rules="required|integer|between:0,100">
+      <app-input
+        v-model="newSkill.percent"
+        class="skill-add-line__percent"
+        :error-message="errors[0]"
+        placeholder="100 %"
+      />
+    </ValidationProvider>
     <round-btn
       type="round"
-      @click="addSkill"
+      @click="addSkillHandler"
     />
-  </form>
+  </validation-observer>
 </template>
 
 <script>
 import appInput from '../input/input.vue'
 import roundBtn from '../button/types/roundBtn/roundBtn.vue'
+import { ValidationProvider, ValidationObserver, extend } from 'vee-validate'
+import { required, between, integer } from 'vee-validate/dist/rules'
+
+extend('required', {
+  ...required,
+  message: 'Не введен процент'
+})
+
+extend('integer', {
+  ...integer,
+  message: 'Введите число'
+})
+
+extend('between', {
+  ...between,
+  message: 'Введите корректное значение'
+})
 
 export default {
   components: {
     appInput,
-    roundBtn
+    roundBtn,
+    ValidationProvider,
+    ValidationObserver
   },
   props: {
     disabled: {
@@ -37,35 +64,18 @@ export default {
   data() {
     return {
       newSkill: {
-        id: null,
         title: null,
         percent: null
-      },
-      errorPercentMessage: '',
-      errorTitleMessage: ''
+      }
     }
   },
   methods: {
-    addSkill() {
-      this.errorTitleMessage = ''
-      this.errorPercentMessage = ''
-      if (this.newSkill.title === null) {
-        this.errorTitleMessage = 'Не введен навык'
-      } 
-      else if (this.newSkill.title.trim() === '') {
-        this.errorTitleMessage = 'Не введен навык'
-      }
-
-      if (this.newSkill.percent === null) {
-        this.errorPercentMessage = 'Не введен процент'
-      }
-      else if (this.newSkill.percent.trim() === '') {
-        this.errorPercentMessage = 'Не введен процент'
-      }
-
-      if (this.errorTitleMessage == '' && this.errorPercentMessage == '') {
-        this.$emit('add-skill', this.newSkill)
-      }
+    async addSkillHandler() {
+      await this.$refs['skill-add'].validate().then(isValid => {
+        if (isValid) {
+          this.$emit('create-skill', this.newSkill)
+        }
+      })
     }
   }
 }

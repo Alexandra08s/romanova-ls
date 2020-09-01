@@ -12,44 +12,52 @@
         ></icon>
       </div>
     </div>
-    <form
+    <validation-observer
       v-else
+      ref="edit-line"
       class="title"
-      @submit.prevent
+      tag="div"
     >
       <div class="input">
-        <app-input
-          v-model="title"
-          placeholder="Название новой группы"
-          :value="value"
-          :error-message="errorMessage"
-          autofocus="autofocus"
-          no-side-paddings="no-side-paddings"
-          @input="$emit('input', $event)"
-          @keydown.native.enter="onApprove"
-        ></app-input>
+        <ValidationProvider v-slot="{ errors }" rules="required">
+          <app-input
+            v-model="title"
+            placeholder="Название новой группы"
+            :value="value"
+            :error-message="errors[0] ? 'Не введено название категории' : ''"
+            autofocus="autofocus"
+            no-side-paddings="no-side-paddings"
+            @input="$emit('input', $event)"
+            @keydown.native.enter="onApprove"
+          ></app-input>
+        </ValidationProvider>
       </div>
       <div class="buttons">
         <div class="button-icon">
-          <icon symbol="tick" @click="editCategoryName"></icon>
+          <icon symbol="tick" @click="handleCategory"></icon>
         </div>
         <div class="button-icon">
           <icon
             symbol="cross"
-            :blocked="!!errorMessage"
-            @click="editmode = false"
+            :blocked="disabled"
+            @click="closeEditing"
           ></icon>
         </div>
       </div>
-    </form>
+    </validation-observer>
   </div>
 </template>
 
 <script>
+import { ValidationProvider, ValidationObserver } from 'vee-validate'
+import { required } from 'vee-validate/dist/rules'
+
 export default {
   components: {
     icon: () => import('components/icon'),
-    appInput: () => import('components/input')
+    appInput: () => import('components/input'),
+    ValidationProvider,
+    ValidationObserver
   },
   props: {
     value: {
@@ -66,23 +74,39 @@ export default {
     return {
       editmode: this.defaultEditMode,
       title: this.value,
-      errorMessage: ''
+      originalTitle: this.value,
+      disabled: false
     }
   },
   methods: {
-    editCategoryName() {
-      if (this.title.trim() !== this.value.trim()) {
-        this.editmode = false
-      } else {
-        if (this.title.trim() === '') {
-          console.log(this.errorMessage)
-          this.errorMessage = 'Не заполнено название группы'
-          console.log(this.errorMessage)
-        } else {
-          this.$emit('edit-category-name', this.value)
+    async handleCategory() {
+      await this.$refs['edit-line'].validate().then(isValid => {
+        if (isValid) {
+          if (this.originalTitle === null) {
+            this.$emit('create-category', this.title)
+            this.$emit('change-edit-mode', this.editmode)
+          } else {
+            this.$emit('edit-category', this.title)
+          }
           this.editmode = false
+          this.disabled = false
         }
-      }
+        else {
+          this.disabled = true
+        }
+      })
+    },
+    closeEditing() {
+      this.$refs['edit-line'].validate().then(isValid => {
+        if (isValid) {
+          this.editmode = false
+          this.disabled = false
+          this.$emit('delete-category', this.title)
+        }
+        else {
+          this.disabled = true
+        }
+      })
     }
   }
 }

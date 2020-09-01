@@ -2,31 +2,30 @@
   <card>
     <edit-line
       slot="title"
-      v-model="currentCategory.name"
+      v-model="currentCategory.category"
       :default-edit-mode="empty"
-      @edit-category-name="editCategoryName"
-      @remove="removeSkill"
+      @create-category="$emit('create-category', $event)"
+      @edit-category="$emit('edit-category', $event)"
+      @change-edit-mode="changeEditMode"
+      @delete-category="$emit('delete-category', $event)"
     />
     <template slot="content"> 
       <ul v-if="!empty" class="skills__list">
         <li
-          v-for="(skill, index) in currentCategory.skills"
+          v-for="skill in currentCategory.skills"
           :key="skill.id"
           class="skills__item"
         >
           <skill-item
             :skill="skill"
-            @remove-skill="removeSkill"
-            @edit-skill="$emit('edit-category', {
-              ...currentCategory,
-              skills: currentCategory.skills.map((item, idx) => idx === index ? $event : item)
-            }
-            )"
+            @create-skill="$emit('create-skill', $event)"
+            @remove-skill="$emit('remove-skill', $event)"
+            @edit-skill="$emit('edit-skill', $event)"
           />
         </li>
       </ul>
       <div class="skill__addition">
-        <skill-add-line :disabled="empty" @add-skill="$emit('add-skill', $event)" />
+        <skill-add-line :disabled="disabled && empty" @create-skill="$emit('create-skill', $event)" />
       </div>
     </template>
   </card>
@@ -54,14 +53,15 @@ export default {
       type: Object,
       default: () => ({
         id: null,
-        name: null,
+        category: null,
         skills: []
       })
     }
   },
   data() {
     return {
-      currentCategory: {...this.category}
+      currentCategory: {...this.category},
+      disabled: true
     }
   },
   watch: {
@@ -73,13 +73,8 @@ export default {
     }
   },
   methods: {
-    removeSkill(removedSkillId) {
-      this.currentCategory.skills = this.currentCategory.skills.filter(item => item.id !== removedSkillId)
-      this.$emit('remove-category', this.currentCategory)
-    },
-    editCategoryName(newCategoryName) {
-      this.currentCategory.name = newCategoryName
-      this.$emit('edit-category-name', this.currentCategory)
+    changeEditMode(editmode) {
+      this.disabled = editmode
     }
   }
 }

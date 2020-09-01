@@ -4,6 +4,7 @@
   background-image: url('../../../../images/background-admin.png');
   background-repeat: no-repeat;
   background-size: cover;
+  margin-top: 0.25rem;
 }
 
 .about__wrapper {
@@ -71,5 +72,33 @@
 
   @media screen and (max-width: 590px) {
     width: 100%;
+  }
+}
+
+.about__loader {
+  height: 80vh;
+  position: relative;
+
+  &:before {
+    content: '';
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-image: svg-load("loader.svg", fill=$color-outer-space);
+    animation: rotation 3s infinite linear;
+  }
+}
+
+@keyframes rotation {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(359deg);
   }
 }

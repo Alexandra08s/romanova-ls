@@ -3,27 +3,42 @@ import Router from 'vue-router'
 import AboutPage from './components/pages/about/about-page.vue'
 import ExamplesPage from './components/pages/examples/examples-page.vue'
 import ReviewsPage from './components/pages/reviews/reviews-page.vue'
+import LoginPage from './components/pages/login/login-page.vue'
+import headerBlock from './components/header-block/header-block.vue'
 
 Vue.use(Router)
 
 const router = new Router({
-  mode: 'history',
-  base: '.',
+  base: 'admin',
   routes: [
     {
-      path: '/about',
+      path: '/',
       name: 'about',
-      component: AboutPage
+      components: {
+        default: AboutPage,
+        header: headerBlock
+      }
     },
     {
       path: '/examples',
       name: 'examples',
-      component: ExamplesPage
+      components: {
+        default: ExamplesPage,
+        header: headerBlock
+      }
     },
     {
       path: '/reviews',
       name: 'reviews',
-      component: ReviewsPage
+      components: {
+        default: ReviewsPage,
+        header: headerBlock
+      }
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: LoginPage
     },
     {
       path: '*',

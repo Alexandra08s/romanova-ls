@@ -62,7 +62,10 @@
     "last 2 versions"
   ],
   "dependencies": {
+    "@babel/plugin-transform-runtime": "^7.11.0",
+    "axios": "^0.20.0",
     "babel-eslint": "^10.1.0",
+    "cypress": "^5.0.0",
     "eslint": "^7.7.0",
     "eslint-plugin-vue": "^6.2.2",
     "normalize.css": "^8.0.1",
@@ -72,8 +75,10 @@
     "signale": "^1.4.0",
     "storybook": "^6.0.12",
     "swiper": "^6.1.1",
+    "vee-validate": "^3.3.9",
     "vue": "^2.6.7",
     "vue-awesome-swiper": "^4.1.1",
-    "vue-router": "^3.4.3"
+    "vue-router": "^3.4.3",
+    "vuex": "^3.5.1"
   }
 }
