@@ -41,7 +41,7 @@
         symbol="cross"
         class="skill__btn"
         :blocked="blocked"
-        @click="currentSkill.editMode = false"
+        @click="cancelEditingHandler"
       />
     </div>
   </validation-observer>
@@ -59,7 +59,7 @@
         symbol="pencil"
         class="skill__btn"
         grayscale
-        @click="currentCheck"
+        @click="startEditingHandler"
       />
       <icon
         symbol="trash"
@@ -114,6 +114,7 @@ export default {
         category: this.skill.category,
         editMode: false,
       },
+      savedSkill: {},
       blocked: false
     }
   },
@@ -136,9 +137,13 @@ export default {
         }
       })
     },
-    currentCheck() {
+    startEditingHandler() {
+      this.savedSkill = {...this.currentSkill}
       this.currentSkill.editMode = true
-      console.log(this.currentSkill.editMode)
+    },
+    cancelEditingHandler() {
+      this.currentSkill = {...this.savedSkill}
+      this.currentSkill.editMode = false
     }
   }
 }
