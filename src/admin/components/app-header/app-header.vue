@@ -7,13 +7,14 @@
           {{ headerTitle }}
         </p>
       </div>
-      <underlined-btn :btn-title="btnTitle" />
+      <underlined-btn :btn-title="btnTitle" @click="logout" />
     </div>
   </header>
 </template>
 
 <script>
 import underlinedBtn from '../button/types/underlinedBtn/underlinedBtn.vue'
+import { mapActions } from 'vuex'
 
 export default {
   components: {
@@ -28,6 +29,11 @@ export default {
       type: String,
       default: 'Выйти'
     }
+  },
+  methods: {
+    ...mapActions({
+      logout: 'user/logout'
+    })
   }
 }
 </script>

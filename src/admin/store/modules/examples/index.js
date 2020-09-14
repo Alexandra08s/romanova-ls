@@ -4,63 +4,33 @@ export default {
     data: []
   },
   mutations: {
-    setCategories: (state, categories) => (state.data = categories),
-    addCategory: (state, category) => {
-      category.skills = []
-      state.data.unshift(category)
+    setExamples: (state, examples) => (state.data = examples),
+    addExample: (state, example) => {
+      state.data.unshift(example)
     },
-    editCategory: (state, editedCategory) => {
-      state.data = state.data.map(category => {
-        if (category.id === editedCategory.id) {
-          category.title = editedCategory.title
+    editExample: (state, editedExample) => {
+      state.data = state.data.map(example => {
+        if (example.id === editedExample.id) {
+          example = editedExample
         }
 
-        return category
+        return example
       })
     },
-    deleteCategory: (state, id) => {
-      state.data = state.data.filter(category => category.id !== id)
-    },
-    addSkill: (state, newSkill) => {
-      state.data = state.data.map(category => {
-        if (category.id === newSkill.category) {
-          category.skills.push(newSkill)
-        }
-
-        return category
-      })
-    },
-    removeSkill: (state, removedSkill) => {
-      state.data = state.data.map(category => {
-        if (category.id === removedSkill.category) {
-          category.skills = category.skills.filter(skill => skill.id !== removedSkill.id)
-        }
-
-        return category
-      })
-    },
-    editSkill: (state, editedSkill) => {
-      editedSkill.editMode = false
-      let editedSkillInCategory = category => {
-        category.skills = category.skills.map (skill => {
-          return skill.id === editedSkill.id ? editedSkill : skill
-        })
-      }
-      let findCategory = category => {
-        if (category.id === editedSkill.category) {
-          editedSkillInCategory(category)
-        }
-
-        return category
-      }
-      state.data = state.data.map(findCategory)
+    deleteExample: (state, id) => {
+      state.data = state.data.filter(example => example.id !== id)
     }
   },
   actions: {
-    async create({commit}, title) {
+    async add({commit}, newExample) {
+      const formData = new FormData()
+
+      Object.keys(newExample).forEach(item => {
+        formData.append(item, newExample[item])
+      })
       try {
-        let { data } = await this.$axios.post('/categories', { title })
-        commit('addCategory', data)
+        let { data } = await this.$axios.post('/works', formData)
+        commit('addExample', data)
       } catch (error) {
         throw new Error('Произошла ошибка')
       }
@@ -68,25 +38,29 @@ export default {
     async fetch({commit}) {
       try {
         let userId = localStorage.getItem('userId')
-        let { data } = await this.$axios.get(`/categories/${userId}`)
-        commit('setCategories', data)
+        let { data } = await this.$axios.get(`/works/${userId}`)
+        commit('setExamples', data)
       } catch (error) {
         throw new Error('Произошла ошибка')
       }
     },
-    async edit({commit}, editedCategory) {
+    async edit({commit}, editedExample) {
       try {
-        let { data } = await this.$axios.post(`categories/${editedCategory.id}`, editedCategory.title)
-        console.log(data)
-        commit('editCategory', data)
+        const formData = new FormData()
+
+        Object.keys(editedExample).forEach(item => {
+          formData.append(item, editedExample[item])
+        })
+        let { data } = await this.$axios.post(`works/${editedExample.id}`, formData)
+        commit('editExample', data.work)
       } catch (error) {
         throw new Error('Произошла ошибка')
       }
     },
     async delete({commit}, id) {
       try {
-        let { data } = await this.$axios.delete(`categories/${id}`)
-        commit('deleteCategory', id)
+        let { data } = await this.$axios.delete(`works/${id}`)
+        commit('deleteExample', id)
       } catch (error) {
         throw new Error('Произошла ошибка')
       }

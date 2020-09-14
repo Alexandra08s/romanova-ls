@@ -1,5 +1,67 @@
+@import "../../../../styles/mixins.pcss";
+
 .reviews {
   background-image: url('../../../../images/background-admin.png');
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+.reviews__title {
+  padding-top: 51px;
+  padding-bottom: 51px;
+
+  @include tablets {
+    padding-top: 2.86rem;
+    padding-bottom: 2.86rem;
+  }
+
+  @include phones {
+    padding-top: 2.43rem;
+    padding-bottom: 2.43rem;
+  }
+}
+
+.review-form__comp {
+  margin-bottom: 27px;
+
+  @include tablets {
+    margin-bottom: 2rem;
+  }
+}
+
+.review__list {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -14px;
+  margin-left: -14px;
+
+  @include tablets {
+    margin-right: -1rem;
+    margin-left: -1rem;
+  }
+}
+
+.review__item {
+  width: 33%;
+  min-height: 385px;
+  padding-right: 14px;
+  padding-left: 14px;
+  max-width: 340px;
+
+  @include tablets {
+    width: 50%;
+    min-height: 27.5rem;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    max-width: 24.29rem;
+  }
+
+  @include phones {
+    width: 100%;
+    min-height: 100%;
+    padding-right: 0;
+    padding-left: 0;
+    max-width: 100%;
+    margin-bottom: 0.71rem;
+  }
 }

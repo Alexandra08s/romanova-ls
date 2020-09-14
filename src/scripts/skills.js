@@ -1,4 +1,8 @@
-import Vue from "vue"
+import Vue from 'vue'
+import axios from 'axios'
+import config from '../../env.paths.json'
+
+axios.defaults.baseURL = config.BASE_URL
 
 const skillsProgress = {
   props: { 
@@ -9,8 +13,8 @@ const skillsProgress = {
   },
   methods: {
     drawPercentageCircle() {
-      const circle = this.$refs["circle-progress"]
-      const dashOffset = parseInt(getComputedStyle(circle).getPropertyValue("stroke-dashoffset"), 10)
+      const circle = this.$refs['circle-progress']
+      const dashOffset = parseInt(getComputedStyle(circle).getPropertyValue('stroke-dashoffset'), 10)
       const newDashOffset = dashOffset - dashOffset * this.skill.percent / 100
   
       circle.style.strokeDashoffset = newDashOffset
@@ -45,8 +49,17 @@ new Vue({
       skills: []
     }
   },
-  created() {
-    this.skills = require('../data/skills.json')
+  async created() {
+    try {
+      axios.get('/user').then(response => {
+        localStorage.setItem('userId', response.data.user.id)
+      })
+    } catch(error) {
+      console.log(error.response.data.error)
+    }
+
+    const { data } = await axios.get(`/categories/${localStorage.getItem('userId')}`)
+    this.skills = data
   },
   template: '#skills-block'
 })

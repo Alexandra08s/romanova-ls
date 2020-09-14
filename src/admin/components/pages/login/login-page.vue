@@ -9,7 +9,7 @@
           ref="login-form"
           class="login__form"
           tag="form"
-          @submit.prevent="login"
+          @submit.prevent="loginHandler"
         >
           <div class="login__block login__block-name">
             <ValidationProvider v-slot="{ errors }" rules="required">
@@ -53,9 +53,11 @@
 import appButton from '../../button/types/defaultBtn/defaultBtn.vue'
 import appInput from '../../input/input.vue'
 import $axios from '../../../request.js'
-import { ValidationProvider, ValidationObserver } from 'vee-validate'
+import { ValidationProvider, ValidationObserver, extend } from 'vee-validate'
 import { required } from 'vee-validate/dist/rules'
 import { mapActions } from 'vuex'
+
+extend('required', required)
 
 export default {
   name: 'Login',
@@ -77,16 +79,16 @@ export default {
   },
   methods: {
     ...mapActions({
-      showTooltip: 'tooltip/show'
+      showTooltip: 'tooltip/show',
+      login: 'user/login'
     }),
-    async login() {
+    async loginHandler() {
       this.$refs['login-form'].validate().then(async isValid => {
         if (isValid) {
           this.isDisabled = true
 
           try {
-            const response = await $axios.post('login', this.user)
-            console.log(response)
+            const response = await $axios.post('/login', this.user)
             const token = response.data.token
 
             localStorage.setItem('token', token)
@@ -94,13 +96,9 @@ export default {
               text: 'Вы успешно авторизованы',
               type: 'success'
             })
-            try {
-              $axios.get('/user', {token}).then(response => {
-                localStorage.setItem('userId', response.data.user.id)
-              })
-            } catch(error) {
-              console.log(error.response.data.error)
-            }
+            const userResponse = await $axios.get('/user')
+            localStorage.setItem('userId', userResponse.data.user.id)
+            this.login(userResponse.data.user)
             this.$router.replace('/')
           } catch(error) {
             this.showTooltip({

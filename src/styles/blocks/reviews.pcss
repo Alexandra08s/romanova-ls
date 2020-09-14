@@ -265,27 +265,28 @@
 
 .reviews__img-wrapper {
   margin-right: 31px;
-  min-width: 75px;
-  min-height: 75px;
+  width: 75px;
+  height: 75px;
 
   @include desktop {
     margin-right: 8.5%;
-    min-width: 5rem;
-    min-height: 5rem;
+    width: 5rem;
+    height: 5rem;
   }
 
   @include tablets {
     margin-right: 8%;
-    max-width: 2%;
   }
 }
 
 .reviews__img {
   overflow: hidden;
   border-radius: 50%;
-  height: auto;
+  height: 100%;
   width: 100%;
+  max-width: 100%;
   max-height: unset;
+  object-fit: cover;
 }
 
 .reviews__author-name {

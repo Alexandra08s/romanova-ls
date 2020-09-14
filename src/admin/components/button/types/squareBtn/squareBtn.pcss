@@ -11,9 +11,14 @@
   padding: 20px 0;
 
   @include phones {
-    height: 111px;
+    height: 7.86rem;
     justify-content: flex-start;
     padding-left: 20px;
+  }
+
+  &.disabled {
+    background: $color-silver-chalice;
+    pointer-events: none;
   }
 }
 

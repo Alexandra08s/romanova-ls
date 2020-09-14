@@ -1,0 +1,100 @@
+@import "../../../styles/mixins.pcss";
+
+.add-file__wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $color-mystic-admin;
+  border: 1px dashed $color-silver-chalice;
+  max-width: 47%;
+  max-height: 280px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  @include tablets {
+    border: none;
+    max-width: 71.5%;
+    min-height: 18.64rem;
+    margin-bottom: 5.36rem;
+    position: relative;
+  }
+
+  @include phones {
+    max-width: 120%;
+    min-height: 11.21rem;
+    max-height: 11.21rem;
+    margin-bottom: 5.07rem;
+    width: 112.5%;
+  }
+
+  &.hovered {
+    border: 1px dashed $color-outer-space;
+
+    @include tablets {
+      border: none;
+    }
+  }
+}
+
+.add-file__label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 83px 135px 68px 134px;
+}
+
+.add-file__title {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+  color: rgba(55, 62, 66, 0.6);
+  margin-bottom: 29px;
+  text-align: center;
+  padding: 5px;
+
+  @include tablets {
+    display: none;
+  }
+
+  &.light {
+    background-color: $color-white;
+    padding: 5px;
+  }
+
+  &--mob {
+    display: none;
+
+    @include tablets {
+      display: block;
+    }
+  }
+}
+
+.add-file__btn {
+  width: 184px;
+  height: 50px;
+
+  @include tablets {
+    display: none;
+  }
+
+  &--mob {
+    display: none;
+    
+    @include tablets {
+      display: block;
+      width: 100%;
+      position: absolute!important;
+      bottom: -51px;
+      left: calc(200% - 70vw);
+      transform: translate(-56%, 0%);
+    }
+
+    @include phones {
+      left: calc(175% - 90vw);
+      transform: translate(-45%);
+    }
+  }
+}
+

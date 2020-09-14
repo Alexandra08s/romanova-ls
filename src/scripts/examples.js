@@ -1,4 +1,8 @@
 import Vue from 'vue'
+import axios from 'axios'
+import config from '../../env.paths.json'
+
+axios.defaults.baseURL = config.BASE_URL
 
 const examplesImgMin = {
   props: {
@@ -8,7 +12,15 @@ const examplesImgMin = {
     },
     currentExample: {
       type: Object,
-      required: true
+      required: true,
+      default: () => ({
+        description: null,
+        link: null,
+        photo: null,
+        techs: null,
+        title: null,
+        pageId: null
+      })
     }
   },
   template: '#examples-img-min'
@@ -26,7 +38,15 @@ const examplesSlider = {
     },
     currentExample: {
       type: Object,
-      required: true
+      required: true,
+      default: () => ({
+        description: null,
+        link: null,
+        photo: null,
+        techs: null,
+        title: null,
+        pageId: null
+      })
     }
   },
   components: {
@@ -35,7 +55,8 @@ const examplesSlider = {
   },
   computed: {
     slicedExamples() {
-      const examples = [...this.examples].slice(1, 4)
+      let examples = []
+      this.examples.length > 4 ? examples = [...this.examples].slice(1, 4) : examples = [...this.examples]
       return examples
     }
   },
@@ -46,7 +67,15 @@ const examplesTags = {
   props: {
     currentExample: {
       type: Object,
-      required: true
+      required: true,
+      default: () => ({
+        description: null,
+        link: null,
+        photo: null,
+        techs: null,
+        title: null,
+        pageId: null
+      })
     }
   },
   template: '#examples-tags'
@@ -56,7 +85,15 @@ const examplesInfo = {
   props: {
     currentExample: {
       type: Object,
-      required: true
+      required: true,
+      default: () => ({
+        description: null,
+        link: null,
+        photo: null,
+        techs: null,
+        title: null,
+        pageId: null
+      })
     }
   },
   components: {
@@ -81,15 +118,27 @@ new Vue({
       return this.examples[this.examples.length - 1]
     }
   },
-  created() {
-    const data = require('../data/examples.json')
-    this.examples = this.requireImages(data).reverse()
+  async created() {
+    try {
+      axios.get('/user').then(response => {
+        localStorage.setItem('userId', response.data.user.id)
+      })
+    } catch(error) {
+      console.log(error.response.data.error)
+    }
+
+    const { data } = await axios.get(`/works/${localStorage.getItem('userId')}`)
+    this.examples = this.requireImages(data)
+    for (let i = 0; i < this.examples.length; i++) {
+      this.examples[i].pageId = i + 1
+      this.examples[i].techs = this.examples[i].techs.split(',')
+    }
+    this.examples = this.examples.reverse()
   },
   methods: {
     requireImages(data) {
       return data.map(item => {
-        const requiredImage = require(`../images/content/examples/${item.img}`).default
-        item.img = requiredImage
+        item.photo = `${config.BASE_URL}/${item.photo}`
 
         return item
       })

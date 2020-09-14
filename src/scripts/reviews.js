@@ -1,9 +1,17 @@
-import Vue from "vue"
+import Vue from 'vue'
 import { Swiper, SwiperSlide, directive } from 'vue-awesome-swiper'
 import 'swiper/swiper-bundle.css'
+import axios from 'axios'
+import config from '../../env.paths.json'
+
+axios.defaults.baseURL = config.BASE_URL
 
 new Vue({
-  el: "#reviews-component",
+  el: '#reviews-component',
+  components: {
+    Swiper,
+    SwiperSlide
+  },
   data() {
     return {
       reviews: [],
@@ -32,15 +40,25 @@ new Vue({
       }
     }
   },
-  components: {
-    Swiper,
-    SwiperSlide
+  async created() {
+    try {
+      axios.get('/user').then(response => {
+        localStorage.setItem('userId', response.data.user.id)
+      })
+    } catch(error) {
+      console.log(error.response.data.error)
+    }
+
+    const { data } = await axios.get(`/reviews/${localStorage.getItem('userId')}`)
+    this.reviews = this.requireImages(data)
+  },
+  mounted() {
+    this.btnDisabledHandler()
   },
   methods: {
     requireImages(data) {
       return data.map(item => {
-        const requiredImage = require(`../images/content/reviews/${item.img}`).default
-        item.img = requiredImage
+        item.photo = `${config.BASE_URL}/${item.photo}`
 
         return item
       })
@@ -64,12 +82,5 @@ new Vue({
       direction == 1 ? slider.slideNext() : slider.slidePrev()
     }
   },
-  created() {
-    const data = require('../data/reviews.json')
-    this.reviews = this.requireImages(data)
-  },
-  mounted() {
-    this.btnDisabledHandler()
-  },
-  template: "#reviews-container"
+  template: '#reviews-container'
 })

@@ -4,63 +4,33 @@ export default {
     data: []
   },
   mutations: {
-    setCategories: (state, categories) => (state.data = categories),
-    addCategory: (state, category) => {
-      category.skills = []
-      state.data.unshift(category)
+    setReviews: (state, reviews) => (state.data = reviews),
+    addReviews: (state, review) => {
+      state.data.unshift(review)
     },
-    editCategory: (state, editedCategory) => {
-      state.data = state.data.map(category => {
-        if (category.id === editedCategory.id) {
-          category.title = editedCategory.title
+    editReviews: (state, editedReviews) => {
+      state.data = state.data.map(review => {
+        if (review.id === editedReviews.id) {
+          review = editedReviews
         }
 
-        return category
+        return review
       })
     },
-    deleteCategory: (state, id) => {
-      state.data = state.data.filter(category => category.id !== id)
-    },
-    addSkill: (state, newSkill) => {
-      state.data = state.data.map(category => {
-        if (category.id === newSkill.category) {
-          category.skills.push(newSkill)
-        }
-
-        return category
-      })
-    },
-    removeSkill: (state, removedSkill) => {
-      state.data = state.data.map(category => {
-        if (category.id === removedSkill.category) {
-          category.skills = category.skills.filter(skill => skill.id !== removedSkill.id)
-        }
-
-        return category
-      })
-    },
-    editSkill: (state, editedSkill) => {
-      editedSkill.editMode = false
-      let editedSkillInCategory = category => {
-        category.skills = category.skills.map (skill => {
-          return skill.id === editedSkill.id ? editedSkill : skill
-        })
-      }
-      let findCategory = category => {
-        if (category.id === editedSkill.category) {
-          editedSkillInCategory(category)
-        }
-
-        return category
-      }
-      state.data = state.data.map(findCategory)
+    deleteReviews: (state, id) => {
+      state.data = state.data.filter(review => review.id !== id)
     }
   },
   actions: {
-    async create({commit}, title) {
+    async add({commit}, newReviews) {
+      const formData = new FormData()
+
+      Object.keys(newReviews).forEach(item => {
+        formData.append(item, newReviews[item])
+      })
       try {
-        let { data } = await this.$axios.post('/categories', { title })
-        commit('addCategory', data)
+        let { data } = await this.$axios.post('/reviews', formData)
+        commit('addReviews', data)
       } catch (error) {
         throw new Error('Произошла ошибка')
       }
@@ -68,25 +38,29 @@ export default {
     async fetch({commit}) {
       try {
         let userId = localStorage.getItem('userId')
-        let { data } = await this.$axios.get(`/categories/${userId}`)
-        commit('setCategories', data)
+        let { data } = await this.$axios.get(`/reviews/${userId}`)
+        commit('setReviews', data)
       } catch (error) {
         throw new Error('Произошла ошибка')
       }
     },
-    async edit({commit}, editedCategory) {
+    async edit({commit}, editedReview) {
       try {
-        let { data } = await this.$axios.post(`categories/${editedCategory.id}`, editedCategory.title)
-        console.log(data)
-        commit('editCategory', data)
+        const formData = new FormData()
+
+        Object.keys(editedReview).forEach(item => {
+          formData.append(item, editedReview[item])
+        })
+        let { data } = await this.$axios.post(`/reviews/${editedReview.id}`, formData)
+        commit('editReviews', data.review)
       } catch (error) {
         throw new Error('Произошла ошибка')
       }
     },
     async delete({commit}, id) {
       try {
-        let { data } = await this.$axios.delete(`categories/${id}`)
-        commit('deleteCategory', id)
+        let { data } = await this.$axios.delete(`/reviews/${id}`)
+        commit('deleteReviews', id)
       } catch (error) {
         throw new Error('Произошла ошибка')
       }

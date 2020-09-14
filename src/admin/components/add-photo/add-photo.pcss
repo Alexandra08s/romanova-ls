@@ -1,0 +1,42 @@
+@import "../../../styles/mixins.pcss";
+
+.add-photo__wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  background-color: $color-mystic-admin;
+  border-radius: 50%;
+  border: 1px dashed transparent;
+  width: 220px;
+  height: 220px;
+  overflow: hidden;
+
+  @include tablets {
+    width: 26vw;
+    height: 26vw;
+  }
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 91px;
+    height: 99px;
+    background-image: svg-load("user.svg", fill=$color-white);
+    background-repeat: no-repeat;
+    background-size: 100%;
+
+    @include tablets {
+      width: 12vw;
+      height: 13vw;
+    }
+  }
+
+  &.avatar {
+    &:before {
+      width: 0;
+    }
+  }
+}

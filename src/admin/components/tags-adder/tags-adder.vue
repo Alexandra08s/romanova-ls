@@ -2,7 +2,7 @@
   <div class="tags-adder">
     <app-input
       v-model="currentTags"
-      title="Добавление тега"
+      title=""
       @input="$emit('change', currentTags)"
     />
     <ul class="tags-adder__list">
@@ -48,7 +48,10 @@ export default {
   },
   computed: {
     tagsArray() {
-      return this.currentTags.trim().split(',')
+      if (this.currentTags) {
+        return this.currentTags.trim().split(',')
+      } 
+      return []
     }
   },
   methods: {

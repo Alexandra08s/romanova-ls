@@ -1,0 +1,133 @@
+@import "../../../styles/mixins.pcss";
+
+.example__top {
+  position: relative;
+}
+
+.example__img-wrapper {
+  max-width: 100%;
+  max-height: 190px;
+  overflow: hidden;
+
+  @include tablets {
+    max-width: 24.29rem;
+    max-height: 13.57rem;
+  }
+
+  @include phones {
+    max-width: 100%;
+  }
+}
+
+.example__img {
+  width: 100%;
+  height: auto;
+}
+
+.example__tags {
+  position: absolute;
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  right: 10px;
+  bottom: 12px;
+  margin-right: -4px;
+  margin-left: -4px;
+  margin-bottom: -10px;
+}
+
+.example__tag {
+  padding: 8px 18px;
+  color: rgba(51, 60, 73, 0.8);
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 20px;
+  background-color: $color-catskill-white;
+  border-radius: 17px;
+  margin-right: 4px;
+  margin-left: 4px;
+  margin-bottom: 10px;
+
+  @include tablets {
+    padding: 0.57rem 1.29rem;
+    font-size: 1.07rem;
+    line-height: 1.43rem;
+  }
+}
+
+.example__block {
+  padding: 34px 34px 44px 26px;
+
+  @include tablets {
+    padding: 2.43rem 2.43rem 3.14rem 1.86rem;
+  }
+
+  @include phones {
+    padding: 1.86rem 2.5rem 2.36rem 1.79rem;
+  }
+}
+
+.example__title {
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 25px;
+  color: $color-fiord;
+  margin-bottom: 6px;
+
+  @include tablets {
+    font-size: 1.29rem;
+    line-height: 1.79rem;
+    margin-bottom: 0.43rem;
+  }
+
+  @include phones {
+    margin-bottom: 0.64rem;
+  }
+}
+
+.example__description {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 30px;
+  color: rgba(65, 76, 99, 0.5);
+  margin-bottom: 26px;
+
+  @include tablets {
+    font-size: 1.14rem;
+    line-height: 2.14rem;
+    margin-bottom: 1.86rem;
+  }
+
+  @include phones {
+    font-size: 1rem;
+    line-height: 1.71rem;
+    margin-bottom: 0.5rem;
+  }
+}
+
+.example__link {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 22px;
+  color: $color-governor-bay;
+  margin-bottom: 43px;
+  display: block;
+
+  @include tablets {
+    font-size: 1.14rem;
+    line-height: 1.57rem;
+    margin-bottom: 3.07rem;
+  }
+
+  @include phones {
+    margin-bottom: 2.14rem;
+  }
+}
+
+.example__btns {
+  display: flex;
+}
+
+.example__btn-delete {
+  margin-left: auto;
+}

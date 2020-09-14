@@ -10,9 +10,9 @@ script(type="text/x-template")#examples-container
     )
 
 script(type="text/x-template")#examples-slider
-  .examples__slider(:data-slide="currentExample.id")
+  .examples__slider(:data-slide="currentExample.pageId")
     .examples__slider-img-wrapper
-      img(:src="currentExample.img" class="examples__slider-img")
+      img(:src="currentExample.photo" class="examples__slider-img")
     examples-img-min(
       :currentExample="currentExample"
       :examples="slicedExamples"
@@ -33,7 +33,7 @@ script(type="text/x-template")#examples-img-min
         @click.stop.prevent="$emit('slide', index)"
         type="button"
       )
-        img(:src="example.img").examples__slider-img--min
+        img(:src="example.photo").examples__slider-img--min
 
 script(type="text/x-template")#examples-controls
   .examples__slider-controls
@@ -50,10 +50,10 @@ script(type="text/x-template")#examples-info
       :currentExample="currentExample"
     )
     p.examples__info-name {{currentExample.title}}
-    p.examples__info-text {{currentExample.descr}}
+    p.examples__info-text {{currentExample.description}}
     a(:href="currentExample.link", target="_blank").examples__info-link.link Посмотреть сайт
 
 script(type="text/x-template")#examples-tags
   ul.examples__info-tags
-    li.examples__info-tag(v-for="tag in currentExample.skills")
+    li.examples__info-tag(v-for="tag in currentExample.techs")
       p.examples__info-tag--name {{tag}}

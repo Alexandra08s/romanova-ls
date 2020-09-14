@@ -10,7 +10,7 @@
   </button>
 
   <label v-else-if="typeAttr === 'file'" class="btn-file-container">
-    <div class="btn-file-fake btn-decorator">{{ title }}</div>
+    <div :class="['btn-file-fake btn-decorator', {'no-paddings': noPaddings}, {plain}]">{{ title }}</div>
     <input
       class="btn-file-input"
       type="file"
@@ -33,6 +33,7 @@ export default {
       type: String,
       default: 'button'
     },
+    noPaddings: Boolean,
     plain: Boolean,
     typeAttr: {
       type: String,

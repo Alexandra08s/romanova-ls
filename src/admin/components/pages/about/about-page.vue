@@ -45,14 +45,13 @@
 
 <script>
 import iconedBtn from '../../button/types/iconedBtn/iconedBtn.vue'
-import category from '../../category/category.vue'
 import { mapActions, mapState } from 'vuex'
 
 export default {
   name: 'About',
   components: {
     iconedBtn,
-    category,
+    category: () => import('../../category/category.vue')
   },
   data() {
     return {

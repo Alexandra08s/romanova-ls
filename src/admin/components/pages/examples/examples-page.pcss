@@ -1,5 +1,74 @@
+@import "../../../../styles/mixins.pcss";
+
 .examples {
   background-image: url('../../../../images/background-admin.png');
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+.examples__title {
+  padding-top: 51px;
+  padding-bottom: 52px;
+
+  @include tablets {
+    padding-top: 2.93rem;
+    padding-bottom: 2.86rem;
+  }
+
+  @include phones {
+    padding-top: 2.21rem;
+    padding-bottom: 2.5rem;
+  }
+}
+
+.example-form__comp {
+  margin-bottom: 27px;
+
+  @include tablets {
+    margin-bottom: 2rem;
+  }
+
+  @include phones {
+    margin-left: -1.1rem;
+    width: 112%;
+  }
+}
+
+.example__list {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -14px;
+  margin-left: -14px;
+
+  @include tablets {
+    margin-right: -1rem;
+    margin-left: -1rem;
+  }
+}
+
+.example__item {
+  width: 33%;
+  min-height: 560px;
+  padding-right: 14px;
+  padding-left: 14px;
+  max-width: 340px;
+  margin-bottom: 15px;
+
+  @include tablets {
+    width: 50%;
+    min-height: 40rem;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    max-width: 24.29rem;
+    margin-bottom: 1.1rem;
+  }
+
+  @include phones {
+    width: 100%;
+    min-height: 100%;
+    padding-right: 0;
+    padding-left: 0;
+    max-width: 100%;
+    margin-bottom: 0.71rem;
+  }
 }

@@ -77,7 +77,6 @@ export default {
     async edit({commit}, editedCategory) {
       try {
         let { data } = await this.$axios.post(`/categories/${editedCategory.id}`, {title: editedCategory.title})
-        console.log(data)
         commit('editCategory', data)
       } catch (error) {
         throw new Error('Произошла ошибка')

@@ -27,7 +27,7 @@ script(type="text/x-template")#reviews-container
           p.reviews__text {{ review.text }}
           .reviews__author-block
             .reviews__img-wrapper
-              img(:src="review.img").reviews__img
+              img(:src="review.photo").reviews__img
             .reviews__author
-              p.reviews__author-name {{ review.name }}
-              p.reviews__author-position  {{ review.position }}
+              p.reviews__author-name {{ review.author }}
+              p.reviews__author-position  {{ review.occ }}
