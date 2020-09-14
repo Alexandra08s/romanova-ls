@@ -71,6 +71,7 @@ export default {
   },
   data() {
     return {
+      isEditing: false
     }
   },
   computed: {
@@ -93,6 +94,7 @@ export default {
     editHandler() {
       window.scrollTo({ top: 0, behavior: 'smooth' })
       this.isEditing = true
+      console.log(this.isEditing)
       this.$emit('edit-example', this.example)
     }
   }
