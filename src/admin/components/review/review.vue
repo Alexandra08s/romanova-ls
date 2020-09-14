@@ -1,5 +1,5 @@
 <template>
-  <card>
+  <card :class="{'editing': isEditing}">
     <div slot="title" class="review__top">
       <div class="review__img-wrapper">
         <img :src="coverPhoto" class="review__img">
@@ -27,7 +27,7 @@
           class="review__btn-edit"
           symbol="pencil"
           title="Править"
-          @click="$emit('edit-review', review)"
+          @click="editHandler"
         />
         <icon
           symbol="cross"
@@ -59,10 +59,15 @@ export default {
         link: null,
         description: null
       })
+    },
+    cancelEditing: {
+      type: Boolean,
+      default: true
     }
   },
   data() {
     return {
+      isEditing: false
     }
   },
   computed: {
@@ -73,7 +78,20 @@ export default {
       return `${config.BASE_URL}/${this.review.photo}`
     }
   },
+  watch: {
+    isEditing: {
+      handler(isEditing) {
+        isEditing = !this.cancelEditing
+      },
+      immediate: true
+    }
+  },
   methods: {
+    editHandler() {
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+      this.isEditing = true
+      this.$emit('edit-review', this.review)
+    }
   }
 }
 </script>

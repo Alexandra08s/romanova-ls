@@ -29,6 +29,7 @@
         >
           <example
             :example="example"
+            :cancel-editing="isEditing"
             @edit-example="editExampleHandler"
             @delete-example="deleteExample"
           />

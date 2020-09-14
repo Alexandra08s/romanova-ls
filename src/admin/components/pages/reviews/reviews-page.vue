@@ -29,6 +29,7 @@
         >
           <review
             :review="review"
+            :cancel-editing="isEditing"
             @edit-review="editReviewHandler"
             @delete-review="deleteReview"
           />

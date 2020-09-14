@@ -1,5 +1,5 @@
 <template>
-  <card simple>
+  <card simple :class="{'editing': isEditing}">
     <div class="example__top">
       <div class="example__img-wrapper">
         <img :src="coverPhoto" class="example__img">
@@ -31,7 +31,7 @@
           class="example__btn-edit"
           symbol="pencil"
           title="Править"
-          @click="$emit('edit-example', example)"
+          @click="editHandler"
         />
         <icon
           symbol="cross"
@@ -63,6 +63,10 @@ export default {
         link: null,
         description: null
       })
+    },
+    cancelEditing: {
+      type: Boolean,
+      default: true
     }
   },
   data() {
@@ -77,7 +81,20 @@ export default {
       return `${config.BASE_URL}/${this.example.photo}`
     }
   },
+  watch: {
+    isEditing: {
+      handler(isEditing) {
+        isEditing = !this.cancelEditing
+      },
+      immediate: true
+    }
+  },
   methods: {
+    editHandler() {
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+      this.isEditing = true
+      this.$emit('edit-example', this.example)
+    }
   }
 }
 </script>
