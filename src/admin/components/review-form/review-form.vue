@@ -124,17 +124,21 @@ export default {
     review: {
       handler(review) {
         this.currentReview = {...review}
-      }, 
-      deep: true
-    },
-    isEditing: {
-      handler(isEditing) {
-        if (isEditing) {
+        if (this.isEditing && Object.keys(this.currentReview.photo).length !== 0) {
           this.currentReview.preview = `${config.BASE_URL}/${this.review.photo}`
         }
-      },
+      }, 
+      deep: true,
       immediate: true
-    }
+    },
+    // isEditing: {
+    //   handler(isEditing) {
+    //     if (isEditing) {
+    //       this.currentReview.preview = `${config.BASE_URL}/${this.review.photo}`
+    //     }
+    //   },
+    //   immediate: true
+    // }
   },
   methods: {
     addPhoto(photo) {

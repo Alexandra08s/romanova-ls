@@ -17,11 +17,6 @@
       <p class="review__text">
         {{ review.text }}
       </p>
-      <a
-        class="review__link"
-        :href="review.link"
-        target="_blank"
-      > {{ review.link }} </a>
       <div class="review__btns">
         <icon
           class="review__btn-edit"
@@ -71,19 +66,8 @@ export default {
     }
   },
   computed: {
-    tags() {
-      return this.review.techs.trim().split(',')
-    },
     coverPhoto() {
       return `${config.BASE_URL}/${this.review.photo}`
-    }
-  },
-  watch: {
-    isEditing: {
-      handler(isEditing) {
-        isEditing = !this.cancelEditing
-      },
-      immediate: true
     }
   },
   methods: {

@@ -100,9 +100,9 @@ export default {
     },
     editExampleHandler(example) {
       this.exampleForm = true
-      this.isEditing = true
       this.editedExample = example
       this.editedExample.preview = null
+      this.isEditing = true
     },
     async editExample(editedExample) {
       try {

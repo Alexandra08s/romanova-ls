@@ -39,7 +39,6 @@
         <div class="button-icon">
           <icon
             symbol="cross"
-            :blocked="disabled"
             @click="closeEditing"
           ></icon>
         </div>
@@ -76,8 +75,7 @@ export default {
     return {
       editmode: this.defaultEditMode,
       title: this.value,
-      originalTitle: this.value,
-      disabled: false
+      originalTitle: this.value
     }
   },
   methods: {
@@ -93,22 +91,17 @@ export default {
           this.editmode = false
           this.disabled = false
         }
-        else {
+        else if (this.defaultEditMode === true) {
+          this.disabled = true
+        } else {
           this.disabled = true
         }
       })
     },
     closeEditing() {
-      this.$refs['edit-line'].validate().then(isValid => {
-        if (isValid) {
-          this.editmode = false
-          this.disabled = false
-          this.$emit('delete-category', this.title)
-        }
-        else {
-          this.disabled = true
-        }
-      })
+      this.editmode = false
+      this.$emit('delete-category', this.title)
+      this.$emit('empty-category-handler', false)
     }
   }
 }

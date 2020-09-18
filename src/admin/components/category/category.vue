@@ -8,6 +8,7 @@
       @edit-category="$emit('edit-category', $event)"
       @change-edit-mode="changeEditMode"
       @delete-category="$emit('delete-category', $event)"
+      @empty-category-handler="$emit('remove', $event)"
     />
     <template slot="content"> 
       <ul v-if="!empty" class="skills__list">

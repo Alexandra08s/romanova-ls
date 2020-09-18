@@ -130,18 +130,13 @@ export default {
     example: {
       handler(example) {
         this.currentExample = {...example}
-      }, 
-      deep: true,
-      immediate: true,
-    },
-    isEditing: {
-      handler(isEditing) {
-        if (isEditing) {
+        if (this.isEditing) {
           this.currentExample.preview = `${config.BASE_URL}/${this.example.photo}`
           this.isLight = true
         }
-      },
-      immediate: true
+      }, 
+      deep: true,
+      immediate: true,
     }
   },
   methods: {

@@ -43,7 +43,7 @@ export default {
   },
   data() {
     return {
-      currentTags: this.tags
+      currentTags: null
     }
   },
   computed: {
@@ -52,6 +52,15 @@ export default {
         return this.currentTags.trim().split(',')
       } 
       return []
+    }
+  },
+  watch: {
+    tags: {
+      handler(tags) {
+        this.currentTags = tags
+      }, 
+      deep: true,
+      immediate: true,
     }
   },
   methods: {
