@@ -1,6 +1,11 @@
-Романова Александра Витальевна 03/08/2020
+# Учебный проект сайта и его админ панели
+Просмотр на GithubPages:
+#### Основной сайт:
+https://alexandra08s.github.io/romanova-ls/
+#### Админка:
+> Данные для входа: логин: admin-08, пароль: admin  
 
-# Учебный шаблон проекта Portfolio
+https://alexandra08s.github.io/romanova-ls/admin
 
 > Перед установкой зависимостей и запуском проекта убедитесь, что у вас установлена [последняя версия Node.js & NPM](https://nodejs.org/en/download/current/), а так же 
 [последняя версия Yarn](https://yarnpkg.com/ru/docs/install)
